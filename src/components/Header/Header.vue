@@ -1,11 +1,21 @@
 <template>
   <div class="header">
     <div class="header__content">
-      <img src="https://pngimg.com/uploads/pinterest/pinterest_PNG45.png" alt="Logo"/>
+      <img
+        src="https://pngimg.com/uploads/pinterest/pinterest_PNG45.png"
+        alt="Logo"
+      >
       <button>Home</button>
       <div class="header__content-search">
-        <img :src="SearchSvg" alt="">
-        <input type="text" placeholder="Search" id="s3">
+        <img
+          :src="SearchSvg"
+          alt=""
+        >
+        <input
+          id="s3"
+          type="text"
+          placeholder="Search"
+        >
       </div>
     </div>
   </div>
@@ -14,8 +24,10 @@
 <script lang="ts">
 
 
-import Vue from 'vue'
-import SearchSvg from './../../assets/img/search.svg'
+import Vue from 'vue';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-ignore
+import SearchSvg from './../../assets/img/search.svg';
 
 
 export default Vue.extend({
@@ -23,9 +35,9 @@ export default Vue.extend({
   data() {
     return {
       SearchSvg: SearchSvg
-    }
+    };
   }
-})
+});
 
 </script>
 
@@ -33,12 +45,10 @@ export default Vue.extend({
 <style lang="less">
 
 .header {
-  width: 100%;
-  height: 100%;
+  padding: 0 20px;
   background-color: blue;
 
   &__content {
-    padding: 0 20px;
     display: inline-flex;
     align-items: center;
     height: 55px;
