@@ -5,16 +5,18 @@ Vue.use(Vuex);
 
 const MainContentStore = {
     state: {
+        isLoading: false,
         count: 0,
         itemId: 19,
+        query: 'car',
         layout: {
-            layout1: [],
-            layout2: [],
-            layout3: [],
-            layout4: [],
-            layout5: [],
-            layout6: [],
-            layout7: []
+            layout1: null,
+            layout2: null,
+            layout3: null,
+            layout4: null,
+            layout5: null,
+            layout6: null,
+            layout7: null
         },
         usernames: ['Matix', 'Lillyanna', 'Arianah', 'Jaeger', 'Kemarion', 'Janya', 'Kinzley',
             'Shloime', 'Arham', 'Lyon', 'Lakelynn', 'Everette', 'Eugene', 'Jacobi', 'Klayton',
@@ -35,10 +37,20 @@ const MainContentStore = {
         getPictureNames(state) {
             return state.pictureNames;
         },
+        getIsLoading(state) {
+            return state.isLoading;
+        },
+        getIsLiked(state) {
+            return state.isLiked;
+        },
     },
     mutations: {
         SET_LAYOUT: (state, payload) => {
             state.layout[payload.id].push(payload);
+        },
+
+        DELETE_LAYOUT: (state, payload) => {
+            state.layout[payload.name] = null;
         },
 
         SET_COUNT: (state, payload) => {
@@ -52,30 +64,76 @@ const MainContentStore = {
         SET_ITEM_ID: (state, payload) => {
             state.itemId += payload;
         },
+
+        SET_QUERY: (state, payload) => {
+            state.query = payload;
+        },
+
+        SET_LOADING: (state, payload) => {
+            state.isLoading = payload;
+        },
+
+        SET_LIKED: (state, payload) => {
+            state.isLiked = payload;
+        },
+
+        CREATE_MASSIVE: (state, payload) => {
+            state.layout[payload] = [];
+        },
     },
     actions: {
         GetLayout({commit, state}) {
+
             for (let i = 1; i < 8; i++) {
-                if (state.count === 12) {
-                    commit('SET_COUNT', 0);
-                } else {
-                    commit('ADD_COUNT', 2);
+                commit('CREATE_MASSIVE', 'layout' + i);
+            }
+            for (let i = 0; i < 10; i++) {
+                for (let i = 1; i < 8; i++) {
+                    if (state.count === 12) {
+                        commit('SET_COUNT', 0);
+                    } else {
+                        commit('ADD_COUNT', 2);
+                    }
+                    let marginCount = Math.floor(Math.random() * (100 - 70 + 1)) + 70;
+                    let heightCount = (Math.floor(Math.random() * 10) + 5) * 60;
+                    commit('SET_ITEM_ID', 1);
+                    commit('SET_LAYOUT', {
+                            'x': state.count,
+                            'y': state.layout.length + 1,
+                            'w': 240,
+                            'h': heightCount,
+                            'i': state.itemId.toString(),
+                            'id': 'layout' + i,
+                            'mb': marginCount,
+                            'isLiked': false,
+                            'avatarSrc': 'https://picsum.photos/1920/1080?random=' + Math.trunc(Math.random() * 1000),
+                                // 'https://source.unsplash.com/random/500x500/?people/' + Math.random(),
+                            'pictureSrc': `https://source.unsplash.com/random/1000x1000/?${state.query}/` + Math.random()
+                                // 'https://picsum.photos/1920/1080?random=' + Math.trunc(Math.random() * 1000)
+
+
+
+
+                        },
+                    );
                 }
-                commit('SET_ITEM_ID', 1);
-                commit('SET_LAYOUT', {
-                        'x': state.count,
-                        'y': state.layout.length + 1,
-                        'w': 2,
-                        'h': Math.floor(Math.random() * 10) + 3,
-                        'i': state.itemId.toString(),
-                        'id': 'layout' + i,
-                        'mb': Math.floor(Math.random() * (100 - 70 + 1)) + 70,
-                        'avatarSrc': 'https://source.unsplash.com/random/500x500/?people/' + Math.random(),
-                        'pictureSrc': 'https://picsum.photos/1920/1080?random=' + Math.trunc(Math.random() * 1000)
-                    },
-                );
             }
         },
+
+        setUserQuery({commit}, payload) {
+            commit('SET_QUERY', payload);
+            for (let i = 1; i < 8; i++) {
+                commit('DELETE_LAYOUT', {name: 'layout' + i});
+            }
+        },
+
+        setLoading({commit}, payload) {
+            commit('SET_LOADING', payload);
+        },
+
+        setLiked({commit}, payload) {
+            commit('SET_LIKE', payload);
+        }
     }
 };
 

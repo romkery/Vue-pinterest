@@ -5,7 +5,7 @@
         src="https://pngimg.com/uploads/pinterest/pinterest_PNG45.png"
         alt="Logo"
       >
-      <button>Home</button>
+      <button @click="$router.push('/home')">Home</button>
       <div class="header__content-search">
         <img
           :src="SearchSvg"
@@ -15,27 +15,47 @@
           id="s3"
           type="text"
           placeholder="Search"
+          v-model="userQuery"
+          @keyup.enter="getQuery"
         >
+      </div>
+      <div
+        class="header__content-account"
+        @click="$router.push('/home/account')">
+        RD
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
 
 
 import Vue from 'vue';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-ignore
-import SearchSvg from './../../assets/img/search.svg';
+import {mapActions} from 'vuex';
 
 
 export default Vue.extend({
   name: 'Header',
   data() {
     return {
-      SearchSvg: SearchSvg
+      SearchSvg: require('@/assets/img/search.svg'),
+      userQuery: '',
     };
+  },
+
+  methods: {
+    ...mapActions(['setUserQuery', 'GetLayout', 'setLoading']),
+    async getQuery() {
+      this.setUserQuery(this.userQuery);
+      document.querySelector('body').style.overflow = 'hidden';
+      this.GetLayout();
+      await this.setLoading(true);
+      setTimeout(() => {
+        this.setLoading(false);
+        document.querySelector('body').style.overflow = 'auto';
+      }, 10000);
+    },
   }
 });
 
@@ -46,10 +66,9 @@ export default Vue.extend({
 
 .header {
   padding: 0 20px;
-  background-color: blue;
 
   &__content {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     height: 55px;
     width: 100%;
@@ -58,22 +77,28 @@ export default Vue.extend({
       width: 25px;
       height: 25px;
       margin-right: 20px;
+      cursor: pointer;
     }
 
     button {
-      width: 120px;
-      height: 50px;
+      width: 100px;
+      height: 45px;
       border-radius: 16px;
       margin-right: 10px;
       color: white;
-      background-color: black;
+      background-color: rgba(0, 0, 0, 1);
       cursor: pointer;
+      border: none;
+    }
+
+    button:hover {
+      background-color: rgba(0, 0, 0, .8);
     }
 
     &-search {
       flex-grow: 1;
       display: flex;
-      margin-right: 200px;
+      //margin-right: 200px;
 
       img {
         position: absolute;
@@ -85,12 +110,25 @@ export default Vue.extend({
 
       input {
         padding: 0 30px;
-        height: 44px;
+        height: 48px;
         width: 100%;
+        border: none;
         border-radius: 20px;
-        background-color: #e2e2e2;
+        background: rgba(0, 0, 0, 0.08);
       }
+    }
 
+    &-account {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px !important;
+      height: 43px !important;
+      border: 2px solid black;
+      cursor: pointer;
+      border-radius: 35px;
+      margin-left: 30px;
+      font-weight: 600;
     }
   }
 }

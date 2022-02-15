@@ -1,6 +1,9 @@
 <template>
   <div class="main__content">
-    <ImgMassive/>
+    <Layout/>
+    <router-link to="/home/account">
+      <Account/>
+    </router-link>
   </div>
 </template>
 
@@ -9,14 +12,15 @@
 import Vue from 'vue';
 import ElementUi from 'element-ui';
 import {mapActions, mapGetters} from 'vuex';
-import ImgMassive from '@/helpers/ImgMassive';
+import Account from '@/components/MainContent/Account';
+import Layout from '@/components/MainContent/Layout';
 
 Vue.use(ElementUi);
 
-export default Vue.extend({
-  name: 'MainContent',
+export default Vue.component('MainContent', {
   components: {
-    ImgMassive
+    Layout,
+    Account
   },
 
   data() {
@@ -27,9 +31,20 @@ export default Vue.extend({
     ...mapGetters(['getLayoutElements']),
   },
 
+  created() {
+    this.multiply(1)(2)(3);
+  },
+
   methods: {
     ...mapActions(['GetLayout']),
-  }
+    multiply(a) {
+      return (b) => {
+        return (c) => {
+          return console.log(a * b * c);
+        };
+      };
+    }
+  },
 });
 
 
@@ -43,6 +58,7 @@ export default Vue.extend({
   &__content {
 
   }
+
 }
 
 </style>

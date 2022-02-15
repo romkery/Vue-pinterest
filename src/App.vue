@@ -1,35 +1,36 @@
 <template>
-  <div id="App">
-    <Header />
-    <MainContent />
+  <div>
+    <Header/>
+    <router-view>
+      <div id="App">
+        <router-link to="/home">
+          <Home/>
+        </router-link>
+      </div>
+    </router-view>
   </div>
 </template>
 
 <script lang="ts">
+
 import Vue from 'vue';
-import Header from '@/components/Header/Header.vue';
 import './styles/App.less';
-import MainContent from '@/components/MainContent/MainContent.vue';
+import Home from '@/components/Home/Home.vue';
+import Header from '@/components/Header/Header.vue';
 
 export default Vue.component('App', {
 
   components: {
+    Home,
     Header,
-    MainContent,
-    // Test
   },
 
   data() {
     return {
-      ourUser: {
-        firstName: 'roman',
-        age: 17
-      }
+      ourUser: {}
     };
   },
-
   methods: {
-
   }
 });
 
@@ -41,5 +42,6 @@ export default Vue.component('App', {
   display: flex;
   flex-direction: column;
 }
+
 </style>
 
