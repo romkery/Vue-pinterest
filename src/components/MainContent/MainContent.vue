@@ -31,19 +31,8 @@ export default Vue.component('MainContent', {
     ...mapGetters(['getLayoutElements']),
   },
 
-  created() {
-    this.multiply(1)(2)(3);
-  },
-
   methods: {
     ...mapActions(['GetLayout']),
-    multiply(a) {
-      return (b) => {
-        return (c) => {
-          return console.log(a * b * c);
-        };
-      };
-    }
   },
 });
 
