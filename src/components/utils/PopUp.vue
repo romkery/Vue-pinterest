@@ -1,0 +1,90 @@
+<template>
+  <div
+    v-if="isPopUp"
+    class="pop-up"
+    @click="hidePopUp($event)"
+  >
+    <div class="pop-up-block">
+      <img
+        :src="this.popSrc"
+        alt="ss"
+        @click="this.setLiked"
+      >
+      <button @click="hidePopUp($event)" />
+    </div>
+  </div>
+</template>
+
+<script>
+import Vue from 'vue';
+import {mapActions, mapState} from 'vuex';
+
+export default Vue.extend({
+  name: 'PopUp',
+
+  components: {},
+
+  data() {
+    return {};
+  },
+
+  computed: {
+    ...mapState({
+      isPopUp: state => state.MainModule.isPopUp,
+      popSrc: state => state.MainModule.popSrc,
+    })
+  },
+
+  methods: {
+    ...mapActions('MainModule', [
+      'setLiked', 'setPopUp'
+    ]),
+
+    hidePopUp() {
+      this.setPopUp({isPopUp: false, popSrc: '', isPopUpLayout: false});
+    },
+  }
+});
+
+</script>
+
+
+<style lang="scss">
+
+.pop-up {
+  z-index: 10;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, .7);
+
+  &-block {
+    display: flex;
+
+    img {
+      max-width: 1000px;
+      max-height: 800px;
+      border-radius: 16px;
+    }
+
+    button {
+      margin-left: -32px;
+      width: 30px;
+      height: 30px;
+      background: url("./../../assets/img/cancel.svg");
+      border: none;
+      opacity: 0.5;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 1;
+    }
+  }
+}
+
+</style>

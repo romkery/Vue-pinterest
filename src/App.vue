@@ -1,10 +1,10 @@
 <template>
   <div>
-    <Header/>
+    <Header />
     <router-view>
       <div id="App">
         <router-link to="/home">
-          <Home/>
+          <Home />
         </router-link>
       </div>
     </router-view>
@@ -14,7 +14,7 @@
 <script lang="ts">
 
 import Vue from 'vue';
-import './styles/App.less';
+import './styles/App.scss';
 import Home from '@/components/Home/Home.vue';
 import Header from '@/components/Header/Header.vue';
 
@@ -26,12 +26,11 @@ export default Vue.component('App', {
   },
 
   data() {
-    return {
-      ourUser: {}
-    };
+    return {};
   },
-  methods: {
-  }
+
+  computed: {},
+  methods: {}
 });
 
 </script>

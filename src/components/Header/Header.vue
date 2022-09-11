@@ -1,11 +1,18 @@
 <template>
   <div class="header">
+    <PopUp
+      :pop-src="this.popSrc"
+      :is-pop-up="this.isPopUp"
+    />
     <div class="header__content">
       <img
         src="https://pngimg.com/uploads/pinterest/pinterest_PNG45.png"
         alt="Logo"
+        @click="$router.push('/home')"
       >
-      <button @click="$router.push('/home')">Home</button>
+      <button @click="$router.push('/home')">
+        Home
+      </button>
       <div class="header__content-search">
         <img
           :src="SearchSvg"
@@ -13,15 +20,16 @@
         >
         <input
           id="s3"
+          v-model="userQuery"
           type="text"
           placeholder="Search"
-          v-model="userQuery"
           @keyup.enter="getQuery"
         >
       </div>
       <div
         class="header__content-account"
-        @click="$router.push('/home/account')">
+        @click="$router.push('/account/public')"
+      >
         RD
       </div>
     </div>
@@ -32,11 +40,16 @@
 
 
 import Vue from 'vue';
-import {mapActions} from 'vuex';
+import {mapActions, mapState} from 'vuex';
+import PopUp from '@/components/utils/PopUp';
 
 
 export default Vue.extend({
   name: 'Header',
+
+  components: {
+    PopUp
+  },
   data() {
     return {
       SearchSvg: require('@/assets/img/search.svg'),
@@ -44,17 +57,22 @@ export default Vue.extend({
     };
   },
 
+  computed: {
+    ...mapState({
+      popSrc: state => state.MainModule.popSrc,
+      isPopUp: state => state.MainModule.isPopUp
+    }),
+  },
+
   methods: {
-    ...mapActions(['setUserQuery', 'GetLayout', 'setLoading']),
+    ...mapActions('MainModule', ['setUserQuery', 'GetLayout', 'setLoading']),
     async getQuery() {
       this.setUserQuery(this.userQuery);
-      document.querySelector('body').style.overflow = 'hidden';
       this.GetLayout();
       await this.setLoading(true);
       setTimeout(() => {
         this.setLoading(false);
-        document.querySelector('body').style.overflow = 'auto';
-      }, 10000);
+      }, 2000);
     },
   }
 });
@@ -65,7 +83,6 @@ export default Vue.extend({
 <style lang="less">
 
 .header {
-  padding: 0 20px;
 
   &__content {
     display: flex;
@@ -74,6 +91,7 @@ export default Vue.extend({
     width: 100%;
 
     img {
+      margin-left: 20px;
       width: 25px;
       height: 25px;
       margin-right: 20px;
@@ -129,6 +147,7 @@ export default Vue.extend({
       border-radius: 35px;
       margin-left: 30px;
       font-weight: 600;
+      margin-right: 20px;
     }
   }
 }

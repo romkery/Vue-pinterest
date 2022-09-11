@@ -1,41 +1,49 @@
 <template>
   <div class="main__layout">
-    <div v-if="getIsLoading" class="main__loading">
+    <div
+      v-if="getIsLoading"
+      class="main__loading"
+    >
       <div class="main__loading-block">
-        <div class="main__loading-img"></div>
+        <div class="main__loading-img" />
         <P>Подождите, загружается...</P>
       </div>
     </div>
     <div
       v-for="(item, itIndex) in getLayoutElements"
       :key="itIndex.substr(-1, 1)"
-      class="main__line">
+      class="main__line"
+    >
       <div
-        v-for="(el,elIndex) in item"
+        v-for="(el, elIndex) in item"
         :key="elIndex"
         class="main__item"
-        :style="{maxWidth: el.w + 'px',height: el.h + 'px',marginBottom: el.mb + 'px'}">
+        :style="{maxWidth: el.w + 'px', height: el.h + 'px', marginBottom: defineMb(elIndex, item, el)}"
+      >
         <img
           :key="elIndex"
           :src="el.pictureSrc"
           alt="pict"
-          @click="showPopUp">
+          @click="showPopUp"
+        >
         <div class="main__stats">
           <h5>
             {{ getRandomName() }}
           </h5>
-          <img :src="getRandomBool() ? likedSvg : likeSvg" alt="heartSvg" @click="like">
+          <img
+            :src="getRandomBool() ? likedSvg : likeSvg"
+            alt="heartSvg"
+            @click="like"
+          >
         </div>
         <div class="main__author">
-          <img :src="el.avatarSrc" alt="Avatar" @click="showPopUp">
+          <img
+            :src="el.avatarSrc"
+            alt="Avatar"
+            @click="showPopUp"
+          >
           <p>{{ getRandomUserName() }}</p>
         </div>
-      </div>
-    </div>
-    <div v-if="isPopUp" class="main__pop-up" @click="hidePopUp">
-      <div class="main__pop-up-block">
-        <img :src="popSrc" alt="ss" @click="setLiked">
-        <button @click="hidePopUp"/>
       </div>
     </div>
   </div>
@@ -43,27 +51,22 @@
 
 <script lang="js">
 
-import ElementUi from 'element-ui';
-import {mapActions, mapGetters} from 'vuex';
 import Vue from 'vue';
-
-Vue.use(ElementUi);
+import {mapActions, mapGetters, mapState} from 'vuex';
 
 export default Vue.extend({
-  name: 'ImgMassive',
-  components: {},
+  name: 'Layout',
 
   data() {
     return {
-      isPopUp: false,
-      popSrc: '',
       likeSvg: require('../../assets/img/heart.svg'),
       likedSvg: require('../../assets/img/liked.svg'),
     };
   },
 
   computed: {
-    ...mapGetters(['getLayoutElements', 'getPictureNames',
+    ...mapState('MainModule', ['isPopUpLayout', 'popSrc']),
+    ...mapGetters('MainModule', ['getLayoutElements', 'getPictureNames',
       'getUsernames', 'getIsLiked', 'getIsLoading']),
   },
 
@@ -72,7 +75,7 @@ export default Vue.extend({
   },
 
   methods: {
-    ...mapActions(['GetLayout', 'setLiked']),
+    ...mapActions('MainModule', ['GetLayout', 'setLiked', 'setPopUp']),
     getRandomName() {
       const random = Math.trunc(Math.random() * 10);
       return this.getPictureNames[random];
@@ -84,25 +87,25 @@ export default Vue.extend({
     getRandomBool() {
       return Math.floor(Math.random() * 2) === 1;
     },
-    showPopUp(event) {
+    showPopUp() {
       let target = event.target;
-      this.isPopUp = true;
-      document.querySelector('body').style.overflow = 'hidden';
-      return this.popSrc = target.src;
-    },
-    hidePopUp() {
-      this.isPopUp = false;
-      document.querySelector('body').style.overflow = 'auto';
+      this.setPopUp({isPopUp: true, popSrc: target.src});
     },
     like() {
       let target = event.target;
-      if(RegExp('\\b'+ 'liked' +'\\b').test(target.src)) {
-       return target.src = require('../../assets/img/heart.svg');
-      }
-      else  {
+      if (RegExp('\\b' + 'liked' + '\\b').test(target.src)) {
+        return target.src = require('../../assets/img/heart.svg');
+      } else {
         return target.src = require('../../assets/img/liked.svg');
       }
     },
+    defineMb(elIndex, item, el) {
+      if (elIndex !== item.length - 1) {
+        return el.mb + 'px';
+      } else {
+        return '80px';
+      }
+    }
   }
 });
 
@@ -171,41 +174,6 @@ export default Vue.extend({
     }
   }
 
-  &__pop-up {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, .7);
-
-    &-block {
-      display: flex;
-
-      img {
-        max-width: 1000px;
-        max-height: 800px;
-        border-radius: 16px;
-      }
-
-      button {
-        margin-left: -32px;
-        width: 30px;
-        height: 30px;
-        background: url("./../../assets/img/cancel.svg");
-        border: none;
-        opacity: 0.5;
-        cursor: pointer;
-      }
-
-      button:hover {
-        opacity: 1;
-      }
-    }
-
-  }
   &__loading {
     position: absolute;
     width: 100%;

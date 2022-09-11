@@ -4,7 +4,10 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const MainContentStore = {
+    namespaced: true,
     state: {
+        isPopUp: false,
+        popSrc: '',
         isLoading: false,
         count: 0,
         itemId: 19,
@@ -57,6 +60,14 @@ const MainContentStore = {
             state.count = payload;
         },
 
+        SET_POPUP: (state, payload) => {
+            state.isPopUp = payload.isPopUp;
+        },
+
+        SET_POP: (state, payload) => {
+            state.popSrc = payload.popSrc;
+        },
+
         ADD_COUNT: (state, payload) => {
             state.count += payload;
         },
@@ -106,12 +117,12 @@ const MainContentStore = {
                             'id': 'layout' + i,
                             'mb': marginCount,
                             'isLiked': false,
-                            'avatarSrc': 'https://picsum.photos/1920/1080?random=' + Math.trunc(Math.random() * 1000),
-                                // 'https://source.unsplash.com/random/500x500/?people/' + Math.random(),
-                            'pictureSrc': `https://source.unsplash.com/random/1000x1000/?${state.query}/` + Math.random()
-                                // 'https://picsum.photos/1920/1080?random=' + Math.trunc(Math.random() * 1000)
-
-
+                            'avatarSrc':
+                                'https://picsum.photos/200/200?random=' + Math.trunc(Math.random() * 1000),
+                            //     'https://source.unsplash.com/random/100x100/?people/' + Math.random(),
+                            //     'https://pexelsdimasv1.p.rapidapi.com/v1/search?ocean',
+                            'pictureSrc': `https://source.unsplash.com/random/100x100/?${state.query}/` + Math.random()
+                            // 'https://picsum.photos/1920/1080?random=' + Math.trunc(Math.random() * 1000)
 
 
                         },
@@ -133,7 +144,12 @@ const MainContentStore = {
 
         setLiked({commit}, payload) {
             commit('SET_LIKE', payload);
-        }
+        },
+
+        setPopUp({commit}, payload) {
+            commit('SET_POPUP', payload);
+            commit('SET_POP', payload);
+        },
     }
 };
 

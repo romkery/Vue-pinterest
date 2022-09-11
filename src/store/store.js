@@ -1,11 +1,13 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
+import vuex from 'vuex';
 import MainContentStore from '@/store/modules/MainContent-store';
+import AccountStore from '@/store/modules/Account-store';
 
-Vue.use(Vuex);
+Vue.use(vuex);
 
-export default new Vuex.Store({
-    modules:{
-        MainContentStore: MainContentStore
+export default new vuex.Store({
+    modules: {
+        AccountModule: AccountStore,
+        MainModule: MainContentStore,
     }
 });

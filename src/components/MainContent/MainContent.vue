@@ -1,9 +1,6 @@
 <template>
   <div class="main__content">
-    <Layout/>
-    <router-link to="/home/account">
-      <Account/>
-    </router-link>
+    <Layout />
   </div>
 </template>
 
@@ -11,8 +8,8 @@
 
 import Vue from 'vue';
 import ElementUi from 'element-ui';
-import {mapActions, mapGetters} from 'vuex';
-import Account from '@/components/MainContent/Account';
+import {mapActions, mapGetters, mapState} from 'vuex';
+import Account from '@/components/MainContent/Account/Account';
 import Layout from '@/components/MainContent/Layout';
 
 Vue.use(ElementUi);
@@ -20,7 +17,6 @@ Vue.use(ElementUi);
 export default Vue.component('MainContent', {
   components: {
     Layout,
-    Account
   },
 
   data() {
@@ -28,11 +24,11 @@ export default Vue.component('MainContent', {
   },
 
   computed: {
-    ...mapGetters(['getLayoutElements']),
+    ...mapGetters('MainModule', ['getLayoutElements']),
   },
 
   methods: {
-    ...mapActions(['GetLayout']),
+    ...mapActions('MainModule', ['GetLayout']),
   },
 });
 
@@ -45,7 +41,6 @@ export default Vue.component('MainContent', {
 .main {
 
   &__content {
-
   }
 
 }
