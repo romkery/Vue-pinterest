@@ -6,9 +6,9 @@
   >
     <div class="pop-up-block">
       <img
-        :src="this.popSrc"
+        :src="popSrc"
         alt="ss"
-        @click="this.setLiked"
+        @click="setLiked"
       >
       <button @click="hidePopUp($event)" />
     </div>
@@ -41,6 +41,7 @@ export default Vue.extend({
     ]),
 
     hidePopUp() {
+      document.querySelector('body').style.overflow = 'auto';
       this.setPopUp({isPopUp: false, popSrc: '', isPopUpLayout: false});
     },
   }
@@ -53,14 +54,15 @@ export default Vue.extend({
 
 .pop-up {
   z-index: 10;
-  position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, .7);
+  overflow: hidden;
 
   &-block {
     display: flex;

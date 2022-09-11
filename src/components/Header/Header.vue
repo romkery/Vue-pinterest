@@ -1,8 +1,8 @@
 <template>
   <div class="header">
     <PopUp
-      :pop-src="this.popSrc"
-      :is-pop-up="this.isPopUp"
+      :pop-src="popSrc"
+      :is-pop-up="isPopUp"
     />
     <div class="header__content">
       <img
@@ -66,14 +66,23 @@ export default Vue.extend({
 
   methods: {
     ...mapActions('MainModule', ['setUserQuery', 'GetLayout', 'setLoading', 'removeLayout']),
+
     async getQuery() {
+      this.$router.push('/home');
+
       this.setUserQuery(this.userQuery);
+
       this.removeLayout();
+
       this.GetLayout();
+      document.querySelector('body').style.overflow = 'hidden';
       await this.setLoading(true);
       setTimeout(() => {
+        document.querySelector('body').style.overflow = 'auto';
         this.setLoading(false);
       }, 2000);
+
+      this.userQuery = '';
     },
   }
 });

@@ -89,6 +89,7 @@ export default Vue.extend({
     },
     showPopUp() {
       let target = event.target;
+      document.querySelector('body').style.overflow = 'hidden';
       this.setPopUp({isPopUp: true, popSrc: target.src});
     },
     like() {
@@ -120,8 +121,8 @@ export default Vue.extend({
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    //margin: 0 100px;
   }
+
 
   &__line {
     display: flex;
@@ -182,6 +183,7 @@ export default Vue.extend({
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, .9);
+    overflow: hidden;
 
     &-block {
       display: flex;
@@ -201,8 +203,10 @@ export default Vue.extend({
     }
 
   }
+}
 
-
+body.modal-open {
+  overflow-y: hidden;
 }
 
 </style>
