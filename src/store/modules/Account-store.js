@@ -7,8 +7,8 @@ const Account = {
     namespaced: true,
     state: {
         profile: {
-            nickname: '_Whiteek_',
-            username: 'White Wolf',
+            nickname: 'C L A S S I C',
+            username: 'Dmitriev Roman',
             bio: 'Hello everyone, this is my vue portfolio application, based on pinterest',
             info: [
                 {
@@ -25,10 +25,10 @@ const Account = {
                 }
             ],
             publications: [
-                'https://sun9-79.userapi.com/impg/c855132/v855132873/24cfe9/wjab-0mpLQ8.jpg?size=1620x2160&quality=96&sign=346b09311e4977abda6cdf6d735fa7d9&type=album',
-                'https://sun9-22.userapi.com/impg/KB2qKZB9cEDR1eR8Ozkoyc2_ak1xiDzEN28eTQ/njaCVji__Qw.jpg?size=2075x2160&quality=95&sign=e202e9dd95e13b278c65528a634ce4b5&type=album',
-                'https://sun9-82.userapi.com/impg/4l1AkljuiMyENr25q0xVFjEBfZTNJCNk42j4hQ/f6ofbpBOpdM.jpg?size=750x750&quality=95&sign=12c33c26d4715ac67ca80f77fcdb9f6c&type=album',
-                'https://sun9-82.userapi.com/impg/4l1AkljuiMyENr25q0xVFjEBfZTNJCNk42j4hQ/f6ofbpBOpdM.jpg?size=750x750&quality=95&sign=12c33c26d4715ac67ca80f77fcdb9f6c&type=album'
+                'https://sun4.userapi.com/sun4-16/s/v1/ig2/syDn78mL64pLXS5REFq5S8M3uFODRaR55tHe8LgsCB6bCkik7iZO5NyjOWMeBOeJ-WSZULNTk2VJ4rj04yQj8yiR.jpg?size=736x981&quality=96&type=album',
+                'https://sun9-north.userapi.com/sun9-86/s/v1/ig2/0Gr3HSpBst8AsCGTkyu3ZPBfO7i0wtXIywg-U3p501RCO6EDxp0mh6OHSDI-zUAtZ3i8vyScV2IJ8Ng8l_ckWFgo.jpg?size=720x720&quality=96&type=album',
+                'https://sun4.userapi.com/sun4-10/s/v1/ig2/suVCvFx14Ko6LhgxnOT3Yqg43w7Wzg-RDVn7Co9YixdytsQ_A96jXZ2_l1b7RMmw6EaOFvtyo2hNfJ7S2TRjwqZo.jpg?size=736x1023&quality=96&type=album',
+                'https://sun9-west.userapi.com/sun9-70/s/v1/ig2/F18qh9aI_WrrLl2voofSUASRhDlSpTxBJBVCfh-hNVG-ze3RYEvs6dvsDkn7Zr8UmHNM6ofYEOphveRpFjWo0PBU.jpg?size=736x1308&quality=95&type=album'
             ],
             saved: [
                 'https://i.pinimg.com/564x/64/53/12/64531252c5c41fe27b34cfbe864a9ced.jpg',

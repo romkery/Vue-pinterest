@@ -65,9 +65,10 @@ export default Vue.extend({
   },
 
   methods: {
-    ...mapActions('MainModule', ['setUserQuery', 'GetLayout', 'setLoading']),
+    ...mapActions('MainModule', ['setUserQuery', 'GetLayout', 'setLoading', 'removeLayout']),
     async getQuery() {
       this.setUserQuery(this.userQuery);
+      this.removeLayout();
       this.GetLayout();
       await this.setLoading(true);
       setTimeout(() => {

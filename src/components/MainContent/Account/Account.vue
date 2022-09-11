@@ -4,13 +4,13 @@
     <div class="account">
       <div class="account__header">
         <img
-          src="https://sun4-10.userapi.com/s/v1/ig2/WnnXZ8qMFGXG57edF-YcbysK_efKcuBJkMgytSu6E2Z9W9pmvnDL9P-5w7YvL3s9jJ7O8H6jeNkOaseTrCrPCWud.jpg?size=400x400&quality=96&crop=0,0,599,599&ava=1"
+          src="https://avatars.githubusercontent.com/u/81356582?s=400&u=cab5fc803e5b2ad6c53dc52febbf0f12f51ee32c&v=4"
           alt="Avatar"
           class="account__header-avatar"
         >
         <div class="account__info">
           <div class="account__info-top">
-            <p>{{ this.nickname }}</p>
+            <p>{{ nickname }}</p>
             <button>Редактировать профиль</button>
             <img
               :src="settingsSvg"
@@ -28,8 +28,8 @@
             </div>
           </div>
           <div class="account__info-bottom">
-            <h3>{{ this.username }}</h3>
-            <p>{{ this.bio }}</p>
+            <h3>{{ username }}</h3>
+            <p>{{ bio }}</p>
           </div>
         </div>
       </div>

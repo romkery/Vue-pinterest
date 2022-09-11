@@ -94,17 +94,23 @@ const MainContentStore = {
     },
     actions: {
         GetLayout({commit, state}) {
+            let count = 0; // id картинки (чтобы не повторялась)
 
             for (let i = 1; i < 8; i++) {
                 commit('CREATE_MASSIVE', 'layout' + i);
             }
             for (let i = 0; i < 10; i++) {
+
                 for (let i = 1; i < 8; i++) {
+
+                    count++;
+
                     if (state.count === 12) {
                         commit('SET_COUNT', 0);
                     } else {
                         commit('ADD_COUNT', 2);
                     }
+
                     let marginCount = Math.floor(Math.random() * (100 - 70 + 1)) + 70;
                     let heightCount = (Math.floor(Math.random() * 10) + 5) * 60;
                     commit('SET_ITEM_ID', 1);
@@ -117,18 +123,24 @@ const MainContentStore = {
                             'id': 'layout' + i,
                             'mb': marginCount,
                             'isLiked': false,
-                            'avatarSrc':
-                                'https://picsum.photos/200/200?random=' + Math.trunc(Math.random() * 1000),
-                            //     'https://source.unsplash.com/random/100x100/?people/' + Math.random(),
-                            //     'https://pexelsdimasv1.p.rapidapi.com/v1/search?ocean',
-                            'pictureSrc': `https://source.unsplash.com/random/100x100/?${state.query}/` + Math.random()
-                            // 'https://picsum.photos/1920/1080?random=' + Math.trunc(Math.random() * 1000)
-
-
+                            'avatarSrc': `https://loremflickr.com/100/100/people?lock=${Math.trunc(Math.random() * 1000)}`,
+                            'pictureSrc': `https://loremflickr.com/500/500/${state.query}?lock=${Math.trunc(Math.random() * 100000)}`
                         },
                     );
                 }
             }
+        },
+
+        removeLayout({commit, state}, payload) {
+            state.layout = {
+                layout1: null,
+                layout2: null,
+                layout3: null,
+                layout4: null,
+                layout5: null,
+                layout6: null,
+                layout7: null
+            };
         },
 
         setUserQuery({commit}, payload) {

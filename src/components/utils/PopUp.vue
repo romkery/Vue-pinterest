@@ -67,7 +67,7 @@ export default Vue.extend({
 
     img {
       max-width: 1000px;
-      max-height: 800px;
+      max-height: 600px;
       border-radius: 16px;
     }
 
