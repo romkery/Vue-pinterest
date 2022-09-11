@@ -31,7 +31,7 @@
             {{ getRandomName() }}
           </h5>
           <img
-            :src="getRandomBool() ? likedSvg : likeSvg"
+            src="../../assets/img/heart.svg"
             alt="heartSvg"
             @click="like"
           >
@@ -58,10 +58,7 @@ export default Vue.extend({
   name: 'Layout',
 
   data() {
-    return {
-      likeSvg: require('../../assets/img/heart.svg'),
-      likedSvg: require('../../assets/img/liked.svg'),
-    };
+    return {};
   },
 
   computed: {
@@ -85,7 +82,7 @@ export default Vue.extend({
       return this.getUsernames[random];
     },
     getRandomBool() {
-      return Math.floor(Math.random() * 2) === 1;
+      return Math.floor(Math.random() * 2) === 1 ? require('../../assets/img/liked.svg') : require('../../assets/img/heart.svg');
     },
     showPopUp() {
       let target = event.target;

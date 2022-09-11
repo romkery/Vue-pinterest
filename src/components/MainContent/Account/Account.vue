@@ -13,7 +13,7 @@
             <p>{{ nickname }}</p>
             <button>Редактировать профиль</button>
             <img
-              :src="settingsSvg"
+              src="../../../assets/img/settings.svg"
               alt="setting-svg"
             >
           </div>
@@ -54,9 +54,7 @@ export default Vue.extend({
     },
 
     data() {
-      return {
-        settingsSvg: require('@/assets/img/settings.svg'),
-      };
+      return {};
     },
 
     computed: {

@@ -1,10 +1,31 @@
 <template>
   <div class="account">
     <div class="account__content">
-      <div class="account__content-tabs" v-for="tab in tabs" :key="tab.title">
+      <div
+        v-for="tab in tabs"
+        :key="tab.title"
+        class="account__content-tabs"
+      >
         <div :class="[`account__content-tabs-tab`, {'account__content-tabs-tab--active': tab.isActive}]">
-          <div class="account__content-tabs-tab-wrap" @click="selectTab(tab)">
-            <img :src="tab.img" :alt="tab.title">
+          <div
+            class="account__content-tabs-tab-wrap"
+            @click="selectTab(tab)"
+          >
+            <img
+              v-if="tab.component === 'public'"
+              src="../../../assets/img/cell.svg"
+              alt="/"
+            >
+            <img
+              v-if="tab.component === 'saved'"
+              src="../../../assets/img/saved.svg"
+              alt="/"
+            >
+            <img
+              v-if="tab.component === 'marks'"
+              src="../../../assets/img/marks.svg"
+              alt="/"
+            >
             {{ tab.title }}
           </div>
         </div>
@@ -12,7 +33,7 @@
     </div>
     <Publication v-if="tabs[0].isActive" />
     <Saved v-if="tabs[1].isActive" />
-    <Marks v-if="tabs[2].isActive"/>
+    <Marks v-if="tabs[2].isActive" />
   </div>
 </template>
 
@@ -32,8 +53,7 @@ export default Vue.extend({
     },
 
     data() {
-      return {
-      };
+      return {};
     },
 
     computed: {
@@ -45,9 +65,8 @@ export default Vue.extend({
     methods: {
       selectTab(selectedTab) {
         this.tabs.forEach(tab => {
-          tab.isActive = (tab.title == selectedTab.title);
+          tab.isActive = (tab.title === selectedTab.title);
         });
-        // this.$router.push(`/account/${selectedTab.component}`);
       },
     },
   }

@@ -16,8 +16,8 @@
         </button>
         <div class="header__content-search">
           <img
-            :src="SearchSvg"
-            alt=""
+            src="../../assets/img/search.svg"
+            alt="search"
           >
           <input
             id="s3"
@@ -54,7 +54,6 @@ export default Vue.extend({
   },
   data() {
     return {
-      SearchSvg: require('@/assets/img/search.svg'),
       userQuery: '',
     };
   },

@@ -44,19 +44,19 @@ const Account = {
             ],
             tabs: [
                 {
-                    img: require('@/assets/img/cell.svg'),
+                    img: '../../../assets/img/cell.svg',
                     title: 'ПУБЛИКАЦИИ',
                     component: 'public',
                     isActive: true,
                 },
                 {
-                    img: require('@/assets/img/saved.svg'),
+                    img: '../../assets/img/saved.svg',
                     title: 'СОХРАНЕННОЕ',
                     component: 'saved',
                     isActive: false,
                 },
                 {
-                    img: require('@/assets/img/marks.svg'),
+                    img: '../../assets/img/marks.svg',
                     title: 'ОТМЕТКИ',
                     component: 'marks',
                     isActive: false,
