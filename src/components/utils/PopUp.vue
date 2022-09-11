@@ -52,17 +52,22 @@ export default Vue.extend({
 
 <style lang="scss">
 
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .pop-up {
+    -webkit-backdrop-filter: blur(33px);
+    backdrop-filter: blur(33px);
+  }
+}
+
 .pop-up {
   z-index: 10;
   width: 100%;
   height: 100%;
-  top: 0;
   position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, .7);
-  overflow: hidden;
 
   &-block {
     display: flex;

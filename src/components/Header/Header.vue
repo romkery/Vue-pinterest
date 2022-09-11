@@ -1,39 +1,41 @@
 <template>
-  <div class="header">
+  <fragment>
     <PopUp
       :pop-src="popSrc"
       :is-pop-up="isPopUp"
     />
-    <div class="header__content">
-      <img
-        src="https://pngimg.com/uploads/pinterest/pinterest_PNG45.png"
-        alt="Logo"
-        @click="$router.push('/home')"
-      >
-      <button @click="$router.push('/home')">
-        Home
-      </button>
-      <div class="header__content-search">
+    <div class="header">
+      <div class="header__content">
         <img
-          :src="SearchSvg"
-          alt=""
+          src="https://pngimg.com/uploads/pinterest/pinterest_PNG45.png"
+          alt="Logo"
+          @click="$router.push('/home')"
         >
-        <input
-          id="s3"
-          v-model="userQuery"
-          type="text"
-          placeholder="Search"
-          @keyup.enter="getQuery"
+        <button @click="$router.push('/home')">
+          Home
+        </button>
+        <div class="header__content-search">
+          <img
+            :src="SearchSvg"
+            alt=""
+          >
+          <input
+            id="s3"
+            v-model="userQuery"
+            type="text"
+            placeholder="Search"
+            @keyup.enter="getQuery"
+          >
+        </div>
+        <div
+          class="header__content-account"
+          @click="$router.push('/account/public')"
         >
-      </div>
-      <div
-        class="header__content-account"
-        @click="$router.push('/account/public')"
-      >
-        RD
+          RD
+        </div>
       </div>
     </div>
-  </div>
+  </fragment>
 </template>
 
 <script lang="js">
@@ -92,7 +94,23 @@ export default Vue.extend({
 
 <style lang="less">
 
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .header {
+    box-sizing: border-box;
+    background-blend-mode: overlay;
+    background-color: #FFFFFF99;
+    -webkit-backdrop-filter: blur(33px);
+    backdrop-filter: blur(33px);
+  }
+}
+
+
 .header {
+  position: sticky;
+  display: block;
+  top: 0;
+  width: 100%;
+  border-radius: 0 0 10px 10px;
 
   &__content {
     display: flex;

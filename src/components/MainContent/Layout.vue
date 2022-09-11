@@ -183,7 +183,6 @@ export default Vue.extend({
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, .9);
-    overflow: hidden;
 
     &-block {
       display: flex;
