@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import vuex from 'vuex';
 import MainContentStore from '@/store/modules/MainContent-store';
-import AccountStore from '@/store/modules/Account-store';
+import AccountStore from '@/store/modules/Account-store.ts';
 
 Vue.use(vuex);
 

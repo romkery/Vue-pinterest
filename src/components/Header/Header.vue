@@ -29,7 +29,7 @@
         </div>
         <div
           class="header__content-account"
-          @click="$router.push('/account/public')"
+          @click="$router.push('/account/romkery')"
         >
           RD
         </div>

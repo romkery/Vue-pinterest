@@ -10,7 +10,7 @@
         >
         <div class="account__info">
           <div class="account__info-top">
-            <p>{{ nickname }}</p>
+            <p>{{ profile.nickname }}</p>
             <button>Редактировать профиль</button>
             <img
               src="./../../../assets/img/settings.svg"
@@ -19,7 +19,7 @@
           </div>
           <div class="account__info-middle">
             <div
-              v-for="el in info"
+              v-for="el in profile.info"
               :key="el.title"
               class="account__info-middle-item"
             >
@@ -28,8 +28,8 @@
             </div>
           </div>
           <div class="account__info-bottom">
-            <h3>{{ username }}</h3>
-            <p>{{ bio }}</p>
+            <h3>{{ profile.username }}</h3>
+            <p>{{ profile.bio }}</p>
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
 
 import Vue from 'vue';
 import AccountTabs from '@/components/MainContent/Account/AccountTabs';
-import {mapState} from 'vuex';
+import {mapActions, mapState} from 'vuex';
 
 export default Vue.extend({
     name: 'Account',
@@ -61,14 +61,24 @@ export default Vue.extend({
       ...mapState({
         popSrc: state => state.MainModule.popSrc,
         isPopUp: state => state.MainModule.isPopUp,
-        info: state => state.AccountModule.profile.info,
-        nickname: state => state.AccountModule.profile.nickname,
-        username: state => state.AccountModule.profile.username,
-        bio: state => state.AccountModule.profile.bio,
+        profile: state => state.AccountModule.profile,
       }),
     },
 
-    methods: {},
+    mounted() {
+      this.setMap();
+      this.setUserProfile(this.$route.params.id);
+
+      this.$watch(
+        () => this.$route.params,
+        (toParams, previousParams) => {
+          this.setUserProfile(toParams.id);
+        });
+    },
+
+    methods: {
+      ...mapActions('AccountModule', ['setMap', 'setUserProfile']),
+    },
   }
 );
 

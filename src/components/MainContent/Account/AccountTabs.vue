@@ -47,7 +47,7 @@ export default Vue.extend({
 
     computed: {
       ...mapState({
-        tabs: state => state.AccountModule.profile.tabs
+        tabs: state => state.AccountModule.tabs
       })
     },
 
