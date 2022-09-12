@@ -30,6 +30,9 @@ export default Vue.component('App', {
   },
 
   computed: {},
+  mounted() {
+    this.$router.push('/home');
+  },
   methods: {}
 });
 

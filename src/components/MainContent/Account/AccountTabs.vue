@@ -12,19 +12,8 @@
             @click="selectTab(tab)"
           >
             <img
-              v-if="tab.component === 'public'"
-              src="../../../assets/img/cell.svg"
-              alt="/"
-            >
-            <img
-              v-if="tab.component === 'saved'"
-              src="../../../assets/img/saved.svg"
-              alt="/"
-            >
-            <img
-              v-if="tab.component === 'marks'"
-              src="../../../assets/img/marks.svg"
-              alt="/"
+              :src="require(`../../../assets/img/${tab.img}`)"
+              alt="tab img"
             >
             {{ tab.title }}
           </div>

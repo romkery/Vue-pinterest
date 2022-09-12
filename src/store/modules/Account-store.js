@@ -44,19 +44,19 @@ const Account = {
             ],
             tabs: [
                 {
-                    img: '../../../assets/img/cell.svg',
+                    img: 'cell.svg',
                     title: 'ПУБЛИКАЦИИ',
                     component: 'public',
                     isActive: true,
                 },
                 {
-                    img: '../../assets/img/saved.svg',
+                    img: 'saved.svg',
                     title: 'СОХРАНЕННОЕ',
                     component: 'saved',
                     isActive: false,
                 },
                 {
-                    img: '../../assets/img/marks.svg',
+                    img: 'marks.svg',
                     title: 'ОТМЕТКИ',
                     component: 'marks',
                     isActive: false,
