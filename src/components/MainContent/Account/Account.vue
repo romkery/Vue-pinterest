@@ -4,9 +4,10 @@
     <div class="account">
       <div class="account__header">
         <img
-          src="https://avatars.githubusercontent.com/u/81356582?s=400&u=cab5fc803e5b2ad6c53dc52febbf0f12f51ee32c&v=4"
+          :src="profile.avatar"
           alt="Avatar"
           class="account__header-avatar"
+          @click="showPopUp()"
         >
         <div class="account__info">
           <div class="account__info-top">
@@ -42,15 +43,14 @@
 
 <script>
 
-import Vue from 'vue';
 import AccountTabs from '@/components/MainContent/Account/AccountTabs';
 import {mapActions, mapState} from 'vuex';
+import Layout from '@/components/MainContent/Layout';
 
-export default Vue.extend({
+export default Layout.extend({
     name: 'Account',
     components: {
       AccountTabs,
-      // PopUp
     },
 
     data() {
@@ -110,10 +110,14 @@ export default Vue.extend({
     margin-bottom: 44px;
 
     &-avatar {
+      min-width: 150px;
+      min-height: 150px;
       width: 150px;
       height: 150px;
       border-radius: 100px;
       margin: 0 90px 0 50px;
+      object-fit: cover;
+      cursor: pointer;
     }
   }
 

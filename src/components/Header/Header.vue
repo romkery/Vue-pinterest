@@ -110,6 +110,7 @@ export default Vue.extend({
   top: 0;
   width: 100%;
   border-radius: 0 0 10px 10px;
+  z-index: 9;
 
   &__content {
     display: flex;
