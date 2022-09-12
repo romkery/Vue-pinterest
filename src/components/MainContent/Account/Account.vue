@@ -66,18 +66,18 @@ export default Layout.extend({
     },
 
     mounted() {
-      this.setMap();
-      this.setUserProfile(this.$route.params.id);
-
-      this.$watch(
-        () => this.$route.params,
-        (toParams, previousParams) => {
-          this.setUserProfile(toParams.id);
-        });
+      // this.setMap();
+      // this.setUserProfile(this.$route.params.id);
+      //
+      // this.$watch(
+      //   () => this.$route.params,
+      //   (toParams, previousParams) => {
+      //     this.setUserProfile(toParams.id);
+      //   });
     },
 
     methods: {
-      ...mapActions('AccountModule', ['setMap', 'setUserProfile']),
+      ...mapActions('AccountModule', ['setMap']),
     },
   }
 );

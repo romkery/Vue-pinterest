@@ -27,11 +27,16 @@
             @keyup.enter="getQuery"
           >
         </div>
+        <dropdown
+          :users="users"
+          class="header__content-dropdown"
+          :set-profile="setProfile"
+        />
         <div
           class="header__content-account"
-          @click="$router.push('/account/romkery')"
+          @click="$router.push(`/account/${profile.id}`)"
         >
-          RD
+          <span>{{ getUserInitials }}</span>
         </div>
       </div>
     </div>
@@ -44,13 +49,15 @@
 import Vue from 'vue';
 import {mapActions, mapState} from 'vuex';
 import PopUp from '@/components/utils/PopUp';
+import Dropdown from '@/components/utils/Dropdown';
 
 
 export default Vue.extend({
   name: 'Header',
 
   components: {
-    PopUp
+    PopUp,
+    Dropdown
   },
   data() {
     return {
@@ -59,14 +66,31 @@ export default Vue.extend({
   },
 
   computed: {
+    getUserInitials() {
+      let word = this.profile?.username.split(' ');
+      return word[0].substring(0, 1).toLocaleUpperCase() + word[1].substring(0, 1).toLocaleUpperCase();
+    },
+
     ...mapState({
       popSrc: state => state.MainModule.popSrc,
-      isPopUp: state => state.MainModule.isPopUp
+      isPopUp: state => state.MainModule.isPopUp,
+      users: state => state.AccountModule.users,
+      profile: state => state.AccountModule.profile
     }),
+  },
+
+  mounted() {
+    this.setMap();
   },
 
   methods: {
     ...mapActions('MainModule', ['setUserQuery', 'GetLayout', 'setLoading', 'removeLayout']),
+    ...mapActions('AccountModule', ['setUserProfile', 'setMap']),
+
+    setProfile(id) {
+      this.$router.push(`/account/${id}`);
+      this.setUserProfile(id);
+    },
 
     async getQuery() {
       this.$router.push('/home');
@@ -164,18 +188,23 @@ export default Vue.extend({
       }
     }
 
+    &-dropdown {
+      margin-left: 20px;
+    }
+
     &-account {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 45px !important;
-      height: 43px !important;
+      min-width: 45px;
+      min-height: 43px;
+      width: 45px;
+      height: 43px;
       border: 2px solid black;
       cursor: pointer;
       border-radius: 35px;
-      margin-left: 30px;
       font-weight: 600;
-      margin-right: 20px;
+      margin: 0 20px;
     }
   }
 }
