@@ -146,15 +146,15 @@ export default Vue.extend({
       margin-left: 20px;
       width: 25px;
       height: 25px;
-      margin-right: 20px;
       cursor: pointer;
+      margin-right: 10px;
     }
 
     button {
       width: 100px;
       height: 45px;
       border-radius: 16px;
-      margin-right: 10px;
+      margin: 0 10px;
       color: white;
       background-color: rgba(0, 0, 0, 1);
       cursor: pointer;

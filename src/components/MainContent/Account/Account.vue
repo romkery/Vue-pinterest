@@ -90,7 +90,8 @@ export default Layout.extend({
 @import '/src/styles/variables';
 
 .account {
-  max-width: 935px;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   margin: 0 auto;

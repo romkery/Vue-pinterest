@@ -11,6 +11,7 @@
     </div>
     <div
       v-for="(item, itIndex) in getLayoutElements"
+      :id="'main__line-' + itIndex.substr(-1, 1)"
       :key="itIndex.substr(-1, 1)"
       class="main__line"
     >

@@ -48,21 +48,26 @@ export default Layout.extend({
 
 <style lang="scss">
 .account__content {
+  width: 100%;
+  height: 100%;
 
   &-grid {
+
     display: grid;
-    grid-template-columns: 320px 320px 295px;
+    grid-template-columns: 33% 33% 33%;
     margin-top: 10px;
     justify-content: center;
 
     &-el {
-      margin-right: 30px;
+      margin-right: 5%;
+      margin-bottom: 5%;
     }
 
     img {
-      width: 295px;
-      height: 295px;
-      margin-bottom: 22px;
+      max-width: 295px;
+      max-height: 295px;
+      height: 100%;
+      width: 100%;
       border-radius: 16px;
       object-fit: cover;
       cursor: pointer;

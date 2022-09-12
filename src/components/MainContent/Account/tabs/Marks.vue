@@ -1,6 +1,9 @@
 <template>
   <div class="marks">
-    <img :src="this.userSvg" alt="userSvg">
+    <img
+      :src="this.userSvg"
+      alt="userSvg"
+    >
     <h1>Фото с вами</h1>
     <p>Здесь показываются люди, отметившие вас на фото.</p>
   </div>
@@ -10,8 +13,6 @@
 
 
 import Vue from 'vue';
-import Header from '@/components/Header/Header';
-import MainContent from '@/components/MainContent/MainContent';
 
 
 export default Vue.component('Marks', {
@@ -36,15 +37,15 @@ export default Vue.component('Marks', {
   text-align: center;
 
   img {
-    width: 62px;
-    height: 62px;
+    max-width: 62px;
+    max-height: 62px;
   }
 
   h1 {
     font-weight: 500;
     margin: 0;
   }
-  
+
   p {
     max-width: 350px;
   }

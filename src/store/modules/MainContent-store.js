@@ -124,7 +124,7 @@ const MainContentStore = {
                             'mb': marginCount,
                             'isLiked': false,
                             'avatarSrc': `https://loremflickr.com/100/100/people?lock=${Math.trunc(Math.random() * 1000)}`,
-                            'pictureSrc': `https://loremflickr.com/500/500/${state.query}?lock=${Math.trunc(Math.random() * 100000)}`
+                            'pictureSrc': `https://loremflickr.com/500/500/${state.query}?lock=${Math.trunc(Math.random() * 100000)}`,
                         },
                     );
                 }
