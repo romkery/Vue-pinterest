@@ -12,7 +12,7 @@
             @click="selectTab(tab)"
           >
             <img
-              :src="require(`../../../assets/img/${tab.img}`)"
+              :src="require(`./../../../assets/img/${tab.img}`)"
               alt="tab img"
             >
             {{ tab.title }}

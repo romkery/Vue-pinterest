@@ -31,7 +31,7 @@
             {{ getRandomName() }}
           </h5>
           <img
-            src="../../assets/img/heart.svg"
+            :src="getRandomBool()"
             alt="heartSvg"
             @click="like"
           >
@@ -57,10 +57,6 @@ import {mapActions, mapGetters, mapState} from 'vuex';
 export default Vue.extend({
   name: 'Layout',
 
-  data() {
-    return {};
-  },
-
   computed: {
     ...mapState('MainModule', ['isPopUpLayout', 'popSrc']),
     ...mapGetters('MainModule', ['getLayoutElements', 'getPictureNames',
@@ -82,7 +78,12 @@ export default Vue.extend({
       return this.getUsernames[random];
     },
     getRandomBool() {
-      return Math.floor(Math.random() * 2) === 1 ? require('../../assets/img/liked.svg') : require('../../assets/img/heart.svg');
+      if (Math.floor(Math.random() * 2) === 1) {
+        return require('./../../assets/img/liked.svg');
+      } else {
+        return require('./../../assets/img/heart.svg');
+      }
+      // return (Math.floor(Math.random() * 2) === 1) ? './../../assets/img/liked.svg' : './../../assets/img/heart.svg';
     },
     showPopUp() {
       let target = event.target;
@@ -92,9 +93,9 @@ export default Vue.extend({
     like() {
       let target = event.target;
       if (RegExp('\\b' + 'liked' + '\\b').test(target.src)) {
-        return target.src = require('../../assets/img/heart.svg');
+        return target.src = require('./../../assets/img/heart.svg');
       } else {
-        return target.src = require('../../assets/img/liked.svg');
+        return target.src = require('./../../assets/img/liked.svg');
       }
     },
     defineMb(elIndex, item, el) {

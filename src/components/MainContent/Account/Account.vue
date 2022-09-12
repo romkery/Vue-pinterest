@@ -13,7 +13,7 @@
             <p>{{ nickname }}</p>
             <button>Редактировать профиль</button>
             <img
-              src="../../../assets/img/settings.svg"
+              src="./../../../assets/img/settings.svg"
               alt="setting-svg"
             >
           </div>

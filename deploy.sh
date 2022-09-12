@@ -1,11 +1,5 @@
-#yarn build
+yarn build
 
-rm -rf ../vue-pinterest-gh-pages/*
+git add dist && git commit -m "Update subtree"
 
-cp -R ./dist/* ../vue-pinterest-gh-pages
-
-cd ../vue-pinterest-gh-pages
-
-git add
-git commit -m "new version"
-git push
+git subtree push --prefix dist origin gh-pages

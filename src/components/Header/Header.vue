@@ -16,7 +16,7 @@
         </button>
         <div class="header__content-search">
           <img
-            src="../../assets/img/search.svg"
+            src="./../../assets/img/search.svg"
             alt="search"
           >
           <input
