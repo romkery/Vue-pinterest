@@ -49,19 +49,19 @@ const Account: IAccount = {
             tabs: [
                 {
                     icon: 'el-icon-s-grid',
-                    title: 'ПУБЛИКАЦИИ',
+                    title: 'PUBLICATIONS',
                     component: 'public',
                     isActive: true,
                 },
                 {
                     icon: 'el-icon-star-on',
-                    title: 'СОХРАНЕННОЕ',
+                    title: 'SAVED',
                     component: 'saved',
                     isActive: false,
                 },
                 {
                     icon: 'el-icon-user-solid',
-                    title: 'ОТМЕТКИ',
+                    title: 'MARKS',
                     component: 'marks',
                     isActive: false,
                 }

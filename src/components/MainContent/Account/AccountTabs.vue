@@ -92,12 +92,13 @@ export default Vue.extend({
       i {
         margin-right: 6px;
         @include adaptive_font(16, 10);
+        margin-bottom: 2px;
       }
 
       p {
         @include adaptive_font(16, 10);
-        line-height: 0;
         font-family: auto;
+        line-height: 0;
       }
 
       &--active {
@@ -129,7 +130,6 @@ export default Vue.extend({
     img {
       aspect-ratio: 1 / 1;
       width: 100%;
-      height: 100%;
       border-radius: 16px;
       object-fit: cover;
       cursor: pointer;

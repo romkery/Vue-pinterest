@@ -59,9 +59,9 @@
 }
 
 @media only screen and (min-width: 445px) {
-  #main__line-2 {
-    display: flex;
-  }
+  //#main__line-2 {
+  //  display: flex;
+  //}
   .main__item {
     max-width: 240px !important;
   }
@@ -75,9 +75,9 @@
 }
 
 @media only screen and (max-width: 445px) {
-  #main__line-2 {
-    display: none;
-  }
+  //#main__line-2 {
+  //  display: none;
+  //}
 
   .main__item {
     max-width: 450px !important;
