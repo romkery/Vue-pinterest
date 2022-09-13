@@ -119,8 +119,8 @@ export default Vue.extend({
   &__layout {
     display: flex;
     justify-content: center;
-    margin: 5px 5px;
     gap: 10px;
+    padding: 0 10px;
   }
 
 

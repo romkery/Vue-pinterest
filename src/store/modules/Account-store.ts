@@ -48,19 +48,19 @@ const Account: IAccount = {
             Map: new Map(),
             tabs: [
                 {
-                    img: 'cell.svg',
+                    icon: 'el-icon-s-grid',
                     title: 'ПУБЛИКАЦИИ',
                     component: 'public',
                     isActive: true,
                 },
                 {
-                    img: 'saved.svg',
+                    icon: 'el-icon-star-on',
                     title: 'СОХРАНЕННОЕ',
                     component: 'saved',
                     isActive: false,
                 },
                 {
-                    img: 'marks.svg',
+                    icon: 'el-icon-user-solid',
                     title: 'ОТМЕТКИ',
                     component: 'marks',
                     isActive: false,
@@ -237,7 +237,7 @@ interface IInfo {
 }
 
 interface ITabs {
-    img: string,
+    icon: string,
     title: string,
     component: string,
     isActive: boolean,

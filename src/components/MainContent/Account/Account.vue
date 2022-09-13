@@ -2,41 +2,43 @@
   <div>
     <!--    <PopUp :popSrc="this.popSrc" :isPopUp="this.isPopUp"/>-->
     <div class="account">
-      <div class="account__header">
-        <img
-          :src="profile.avatar"
-          alt="Avatar"
-          class="account__header-avatar"
-          @click="showPopUp()"
-        >
-        <div class="account__info">
-          <div class="account__info-top">
-            <p>{{ profile.nickname }}</p>
-            <button>Редактировать профиль</button>
-            <img
-              src="./../../../assets/img/settings.svg"
-              alt="setting-svg"
-            >
-          </div>
-          <div class="account__info-middle">
-            <div
-              v-for="el in profile.info"
-              :key="el.title"
-              class="account__info-middle-item"
-            >
-              <h4>{{ el.count }}</h4>
-              {{ el.title }}
+      <div class="container">
+        <div class="account__header">
+          <img
+            :src="profile.avatar"
+            alt="Avatar"
+            class="account__header-avatar"
+            @click="showPopUp()"
+          >
+          <div class="account__info">
+            <div class="account__info-top">
+              <p>{{ profile.nickname }}</p>
+              <button>Редактировать профиль</button>
+              <img
+                src="./../../../assets/img/settings.svg"
+                alt="setting-svg"
+              >
+            </div>
+            <div class="account__info-middle">
+              <div
+                v-for="el in profile.info"
+                :key="el.title"
+                class="account__info-middle-item"
+              >
+                <h4>{{ el.count }}</h4>
+                {{ el.title }}
+              </div>
+            </div>
+            <div class="account__info-bottom">
+              <h3>{{ profile.username }}</h3>
+              <p>{{ profile.bio }}</p>
             </div>
           </div>
-          <div class="account__info-bottom">
-            <h3>{{ profile.username }}</h3>
-            <p>{{ profile.bio }}</p>
-          </div>
         </div>
-      </div>
-      <hr>
-      <div class="account__content">
-        <AccountTabs />
+        <hr>
+        <div class="account__content">
+          <AccountTabs />
+        </div>
       </div>
     </div>
   </div>
@@ -90,6 +92,7 @@ export default Layout.extend({
 <style lang="scss">
 
 @import '/src/styles/variables';
+@import "/src/styles/mixins";
 
 .account {
   max-width: 925px;
@@ -99,8 +102,11 @@ export default Layout.extend({
   flex-direction: column;
   margin: 0 auto;
 
+  .container {
+    margin: 0 10px;
+  }
+
   hr {
-    max-width: 935px;
     background-color: black;
     opacity: .5;
     border-width: 0.5px;
@@ -113,7 +119,6 @@ export default Layout.extend({
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 
@@ -130,9 +135,11 @@ export default Layout.extend({
   }
 
   &__info {
+    width: 100%;
     display: flex;
     flex-direction: column;
     max-width: 400px;
+    @include adaptive_font(14, 12);
 
     &-top {
       display: flex;
@@ -142,7 +149,7 @@ export default Layout.extend({
 
       p {
         margin: 0;
-        font-size: 24px;
+        @include adaptive_font(24, 12);
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -151,9 +158,9 @@ export default Layout.extend({
 
       button {
         margin: 0 15px;
-        width: 190px;
+        max-width: 190px;
         height: 30px;
-        font-size: 14px;
+        @include adaptive_font(14, 12);
         background: transparent;
         border-radius: 5px;
         border: solid 1px $accent;
@@ -177,13 +184,15 @@ export default Layout.extend({
     &-middle {
       display: flex;
       margin-top: 20px;
+      gap: 40px;
+      align-items: center;
+      justify-content: space-between;
 
       &-item {
         display: flex;
-        margin-right: 40px;
-        align-items: center;
 
         h4 {
+          @include adaptive_font(14, 8);
           margin: 0 4px 0 0;
         }
       }
@@ -202,7 +211,6 @@ export default Layout.extend({
   &__content {
     display: flex;
     flex-direction: column;
-    margin: 0 10px;
   }
 
 }

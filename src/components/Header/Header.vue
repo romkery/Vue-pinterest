@@ -115,7 +115,9 @@ export default Vue.extend({
 </script>
 
 
-<style lang="less">
+<style lang="scss">
+
+@import "./src/styles/mixins";
 
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .header {
@@ -159,6 +161,7 @@ export default Vue.extend({
       background-color: rgba(0, 0, 0, 1);
       cursor: pointer;
       border: none;
+      @include adaptive_font(16, 10);
     }
 
     button:hover {
@@ -168,7 +171,6 @@ export default Vue.extend({
     &-search {
       flex-grow: 1;
       display: flex;
-      //margin-right: 200px;
 
       img {
         position: absolute;
@@ -185,11 +187,16 @@ export default Vue.extend({
         border: none;
         border-radius: 20px;
         background: rgba(0, 0, 0, 0.08);
+        @include adaptive_font(16, 10);
       }
     }
 
     &-dropdown {
       margin-left: 20px;
+
+      .el-dropdown-link {
+        @include adaptive_font(16, 10);
+      }
     }
 
     &-account {
@@ -205,6 +212,7 @@ export default Vue.extend({
       border-radius: 35px;
       font-weight: 600;
       margin: 0 20px;
+      @include adaptive_font(16, 10);
     }
   }
 }

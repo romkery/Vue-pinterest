@@ -41,8 +41,6 @@ export default Vue.component('App', {
 <style>
 
 #App {
-  display: flex;
-  flex-direction: column;
 }
 
 </style>

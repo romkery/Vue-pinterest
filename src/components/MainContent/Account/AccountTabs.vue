@@ -10,11 +10,8 @@
           class="account__content-tabs-tab-wrap"
           @click="selectTab(tab)"
         >
-          <img
-            :src="require(`./../../../assets/img/${tab.img}`)"
-            alt="tab img"
-          >
-          {{ tab.title }}
+          <i :class="tab.icon" />
+          <p>{{ tab.title }}</p>
         </div>
       </div>
     </div>
@@ -68,6 +65,7 @@ export default Vue.extend({
 <style lang="scss">
 
 @import "/src/styles/variables";
+@import "/src/styles/mixins";
 
 .account__content {
 
@@ -75,8 +73,8 @@ export default Vue.extend({
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding-right: 40px;
     gap: 20px;
+    margin: 0 10px;
 
     &-tab {
       $self: &;
@@ -91,10 +89,15 @@ export default Vue.extend({
         cursor: pointer;
       }
 
-      img {
+      i {
         margin-right: 6px;
-        width: 15px;
-        height: 15px;
+        @include adaptive_font(16, 10);
+      }
+
+      p {
+        @include adaptive_font(16, 10);
+        line-height: 0;
+        font-family: auto;
       }
 
       &--active {
@@ -121,7 +124,7 @@ export default Vue.extend({
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 295px));
     justify-content: center;
-    grid-gap: 5px;
+    grid-gap: 10px;
 
     img {
       aspect-ratio: 1 / 1;
