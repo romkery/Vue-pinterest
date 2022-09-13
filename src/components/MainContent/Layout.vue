@@ -119,7 +119,8 @@ export default Vue.extend({
   &__layout {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin: 5px 5px;
+    gap: 10px;
   }
 
 
@@ -127,10 +128,14 @@ export default Vue.extend({
     display: flex;
     flex-direction: column;
     height: 5000px;
+    justify-content: space-between;
+    align-items: center;
+
   }
 
   &__item {
-    margin: 5px 5px;
+    gap: 5px;
+    width: 100%;
 
     img {
       width: 100%;

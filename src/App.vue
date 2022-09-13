@@ -15,7 +15,6 @@
 
 import Vue from 'vue';
 import './styles/App.scss';
-import './styles/responsive.scss';
 import Home from '@/components/Home/Home.vue';
 import Header from '@/components/Header/Header.vue';
 
