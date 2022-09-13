@@ -35,7 +35,9 @@
         </div>
       </div>
       <hr>
-      <AccountTabs />
+      <div class="account__content">
+        <AccountTabs />
+      </div>
     </div>
   </div>
 </template>
@@ -90,6 +92,7 @@ export default Layout.extend({
 @import '/src/styles/variables';
 
 .account {
+  max-width: 925px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -105,10 +108,14 @@ export default Layout.extend({
   }
 
   &__header {
-    padding-top: 30px;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: row;
-    margin-bottom: 44px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 
     &-avatar {
       min-width: 150px;
@@ -191,5 +198,12 @@ export default Layout.extend({
       }
     }
   }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+  }
+
 }
 </style>

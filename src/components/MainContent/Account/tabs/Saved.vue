@@ -1,17 +1,13 @@
 <template>
-  <div class="account__content-grid">
-    <div
+  <fragment>
+    <img
       v-for="(img, index) in saved"
       :key="index"
-      class="account__content-grid-el"
+      :src="img"
+      alt="Grid"
+      @click="showPopUp()"
     >
-      <img
-        :src="img"
-        alt="Grid"
-        @click="showPopUp()"
-      >
-    </div>
-  </div>
+  </fragment>
 </template>
 
 <script lang="js">
