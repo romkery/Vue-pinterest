@@ -103,7 +103,7 @@ export default Layout.extend({
   margin: 0 auto;
 
   .container {
-    margin: 0 10px;
+    margin: 10px;
   }
 
   hr {

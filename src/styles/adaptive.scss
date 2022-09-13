@@ -65,6 +65,13 @@
   .main__item {
     max-width: 240px !important;
   }
+
+  .pop-up-block {
+    img {
+      max-width: 1000px !important;
+      max-height: 1000px !important;
+    }
+  }
 }
 
 @media only screen and (max-width: 445px) {
@@ -86,6 +93,13 @@
   .header__content {
     img {
       display: none;
+    }
+  }
+
+  .pop-up-block {
+    img {
+      max-width: 300px !important;
+      max-height: 300px !important;
     }
   }
 }
@@ -118,6 +132,15 @@
   .header__content-search {
     input {
       padding: 0 2px !important;
+    }
+  }
+}
+
+@media (min-width: 2561px) {
+  .pop-up-block {
+    img {
+      max-width: 2000px !important;
+      max-height: 2000px !important;
     }
   }
 }
