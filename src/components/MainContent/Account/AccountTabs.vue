@@ -73,8 +73,8 @@ export default Vue.extend({
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 20px;
-    margin: 0 10px;
+    gap: rem(20);
+    margin: 0 rem(10);
 
     &-tab {
       $self: &;
@@ -82,22 +82,22 @@ export default Vue.extend({
       &-wrap {
         display: flex;
         align-items: center;
-        padding: 15px 0;
+        padding: rem(15) 0;
         position: relative;
-        font-weight: 600;
+        //font-weight: 600;
         opacity: 0.5;
         cursor: pointer;
       }
 
       i {
-        margin-right: 6px;
-        @include adaptive_font(16, 10);
-        margin-bottom: 2px;
+        margin-right: rem(6);
+        @include adaptive_font(16, 5);
+        margin-bottom: rem(2);
       }
 
       p {
-        @include adaptive_font(16, 10);
-        font-family: auto;
+        @include adaptive_font(16, 5);
+        font-family: auto, serif;
         line-height: 0;
       }
 
@@ -111,9 +111,9 @@ export default Vue.extend({
             content: '';
             width: 100%;
             background-color: $accent;
-            height: 2px;
+            height: rem(2);
             position: absolute;
-            top: -2px;
+            top: rem(-1);
           }
         }
       }
@@ -123,14 +123,14 @@ export default Vue.extend({
   &-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 295px));
+    grid-template-columns: repeat(3, minmax(0, rem(295)));
     justify-content: center;
-    grid-gap: 10px;
+    grid-gap: rem(10);
 
     img {
       aspect-ratio: 1 / 1;
       width: 100%;
-      border-radius: 16px;
+      border-radius: rem(16);
       object-fit: cover;
       cursor: pointer;
     }

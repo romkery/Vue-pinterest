@@ -11,7 +11,7 @@
     </div>
     <div
       v-for="(item, itIndex) in getLayoutElements"
-      :id="'main__line-' + itIndex.substr(-1, 1)"
+      :id="'main__line--' + itIndex.substr(-1, 1)"
       :key="itIndex.substr(-1, 1)"
       class="main__line"
     >
@@ -19,7 +19,7 @@
         v-for="(el, elIndex) in item"
         :key="elIndex"
         class="main__item"
-        :style="{maxWidth: el.w + 'px', height: el.h + 'px', marginBottom: defineMb(elIndex, item, el)}"
+        :style="{maxWidth: (el.w / 16) + 'rem', height: (el.h / 16) + 'rem', marginBottom: defineMb(elIndex, item, el)}"
       >
         <img
           :key="elIndex"
@@ -101,9 +101,9 @@ export default Vue.extend({
     },
     defineMb(elIndex, item, el) {
       if (elIndex !== item.length - 1) {
-        return el.mb + 'px';
+        return el.mb / 16 + 'rem';
       } else {
-        return '80px';
+        return '5rem';
       }
     }
   }
@@ -112,36 +112,37 @@ export default Vue.extend({
 
 </script>
 
-<style scoped lang="less">
+<style scoped lang="scss">
+@import "./src/styles/mixins";
 
 .main {
 
   &__layout {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    padding: 0 10px;
+    gap: rem(10);
+    padding: 0 rem(10);
   }
 
 
   &__line {
     display: flex;
     flex-direction: column;
-    height: 5000px;
+    height: rem(5000);
     justify-content: space-between;
     align-items: center;
 
   }
 
   &__item {
-    gap: 5px;
+    gap: rem(5);
     width: 100%;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 16px;
+      border-radius: rem(16);
       cursor: pointer;
     }
   }
@@ -152,30 +153,30 @@ export default Vue.extend({
     justify-content: space-between;
 
     h5 {
-      margin: 8px 10px 0 10px;
+      margin: rem(8) rem(10) 0 rem(10);
     }
 
     img {
-      width: 20px;
-      height: 20px;
-      margin-right: 4px;
+      width: rem(20);
+      height: rem(20);
+      margin-right: rem(4);
     }
   }
 
 
   &__author {
     display: inline-flex;
-    margin: 8px 10px 0 10px;
+    margin: rem(8) rem(10) 0 rem(10);
     align-items: center;
 
     img {
-      width: 34px;
-      height: 34px;
-      border-radius: 20px;
+      width: rem(34);
+      height: rem(34);
+      border-radius: rem(20);
     }
 
     p {
-      margin: 0 0 0 8px;
+      margin-right: rem(8);
     }
   }
 
@@ -194,14 +195,14 @@ export default Vue.extend({
 
       p {
         color: white;
-        margin-left: 10px;
+        margin-left: rem(10);
       }
     }
 
     &-img {
       background: url("./../../assets/img/preloader.png");
-      width: 90px;
-      height: 90px;
+      width: rem(90);
+      height: rem(90);
       background-size: cover;
     }
 

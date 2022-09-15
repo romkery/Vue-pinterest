@@ -30,15 +30,15 @@ export default Vue.component('Marks', {
 
 <style lang="less">
 .marks {
-  margin-top: 60px;
+  margin-top: rem(60);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 
   img {
-    max-width: 62px;
-    max-height: 62px;
+    max-width: min(30%, rem(62));
+    max-height: min(30%, rem(62));
   }
 
   h1 {
@@ -47,7 +47,7 @@ export default Vue.component('Marks', {
   }
 
   p {
-    max-width: 350px;
+    max-width: rem(350);
   }
 }
 </style>

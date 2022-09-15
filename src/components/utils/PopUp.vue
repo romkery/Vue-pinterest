@@ -73,15 +73,15 @@ export default Vue.extend({
     display: flex;
 
     img {
-      max-width: 1000px;
-      max-height: 600px;
-      border-radius: 16px;
+      max-width: rem(1000);
+      max-height: rem(600);
+      border-radius: rem(16);
     }
 
     button {
-      margin-left: -32px;
-      width: 30px;
-      height: 30px;
+      margin-left: rem(-32);
+      width: rem(30);
+      height: rem(30);
       background: url("./../../assets/img/cancel.svg");
       border: none;
       opacity: 0.5;

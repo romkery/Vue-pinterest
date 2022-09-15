@@ -135,33 +135,36 @@ export default Vue.extend({
   display: block;
   top: 0;
   width: 100%;
-  border-radius: 0 0 10px 10px;
   z-index: 9;
 
   &__content {
     display: flex;
     align-items: center;
-    height: 55px;
+    height: rem(55);
     width: 100%;
 
     img {
-      margin-left: 20px;
-      width: 25px;
-      height: 25px;
+      margin-left: rem(20);
+      width: rem(25);
+      height: rem(25);
       cursor: pointer;
-      margin-right: 10px;
+      margin-right: rem(10);
     }
 
     button {
-      width: 100px;
-      height: 45px;
-      border-radius: 16px;
-      margin: 0 10px;
+      width: rem(100);
+      height: rem(45);
+      border-radius: rem(16);
+      margin: 0 rem(10);
       color: white;
       background-color: rgba(0, 0, 0, 1);
       cursor: pointer;
       border: none;
       @include adaptive_font(16, 10);
+
+      @media (max-width: em(767)) {
+        height: rem(40);
+      }
     }
 
     button:hover {
@@ -174,28 +177,38 @@ export default Vue.extend({
 
       img {
         position: absolute;
-        margin-left: 8px;
-        margin-top: 12px;
-        width: 22px;
-        height: 22px;
+        margin-left: rem(8);
+        margin-top: rem(12);
+        width: rem(22);
+        height: rem(22);
       }
 
       input {
-        padding: 0 30px;
-        height: 48px;
+        padding: 0 rem(30);
+        height: rem(48);
         width: 100%;
+        min-width: rem(40);
         border: none;
-        border-radius: 20px;
+        border-radius: rem(20);
         background: rgba(0, 0, 0, 0.08);
         @include adaptive_font(16, 10);
+        text-align: center;
+
+        @media (max-width: em(767)) {
+          height: rem(40);
+        }
+      }
+
+      :hover {
+        background: rgba(0, 0, 0, 0.10);
       }
     }
 
     &-dropdown {
-      margin-left: 20px;
+      margin-left: min(rem(20), 2vw);
 
       .el-dropdown-link {
-        @include adaptive_font(16, 10);
+        @include adaptive_font(16, 8);
       }
     }
 
@@ -203,16 +216,23 @@ export default Vue.extend({
       display: flex;
       align-items: center;
       justify-content: center;
-      min-width: 45px;
-      min-height: 43px;
-      width: 45px;
-      height: 43px;
-      border: 2px solid black;
+      min-height: rem(43);
+      min-width: rem(43);
+      border: rem(2) solid black;
       cursor: pointer;
-      border-radius: 35px;
+      border-radius: rem(35);
       font-weight: 600;
-      margin: 0 20px;
+      margin: 0 min(rem(20), 2vw);
       @include adaptive_font(16, 10);
+
+      @media (max-width: em(767)) {
+        min-height: rem(30);
+        min-width: rem(30);
+      }
+
+      span {
+        @include adaptive_font(16, 8)
+      }
     }
   }
 }

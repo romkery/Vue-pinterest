@@ -38,7 +38,9 @@ export default Vue.extend({
 
 </script>
 
-<style>
+<style lang="scss">
+@import "src/styles/_mixins.scss";
+
 .el-dropdown-link {
   cursor: pointer;
   color: #409EFF;
@@ -46,6 +48,6 @@ export default Vue.extend({
 }
 
 .el-icon-arrow-down {
-  font-size: 12px;
+  @include adaptive_font(12, 8)
 }
 </style>
