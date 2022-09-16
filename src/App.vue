@@ -14,7 +14,7 @@
 <script lang="ts">
 
 import Vue from 'vue';
-import './styles/index.scss';
+import './scss/styles.scss';
 import Home from '@/components/Home/Home.vue';
 import Header from '@/components/Header/Header.vue';
 

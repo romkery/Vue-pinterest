@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
-import './styles/index.scss';
+import './scss/globals/_boilerplate.scss';
 import store from '@/store/store';
 import router from './router/router';
 import VueRouter from 'vue-router';

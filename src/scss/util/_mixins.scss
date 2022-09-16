@@ -1,16 +1,16 @@
 @use 'sass:math';
-@import 'variables';
+@use 'src/scss/globals/variables' as v;
 
 @mixin adaptive_font($pcSize, $mobSize) {
   $addSize: $pcSize - $mobSize;
   $addMobSize: $addSize + $addSize * 0.7;
 
   @media (max-width: em(767)) {
-    font-size: calc(#{ rem($mobSize) } + #{ $addMobSize } * ((100vw - 150px) / #{ $maxWidth }));
+    font-size: calc(#{ rem($mobSize) } + #{ $addMobSize } * ((100vw - 150px) / #{ v.$maxWidth }));
   }
 
   @media (min-width: em(767)) {
-    font-size: calc(#{rem($mobSize)} + #{$addSize} * (100vw / #{$maxWidth}));
+    font-size: calc(#{rem($mobSize)} + #{$addSize} * (100vw / #{v.$maxWidth}));
   }
 
 }
@@ -20,11 +20,11 @@
   $addMobSize: $addSize + $addSize * 0.7;
 
   @media (max-width: em(767)) {
-    $prop: calc(#{ rem($mobSize) } + #{ $addMobSize } * ((100vw - 150px) / #{ $maxWidth }));
+    $prop: calc(#{ rem($mobSize) } + #{ $addMobSize } * ((100vw - 150px) / #{ v.$maxWidth }));
   }
 
   @media (min-width: em(767)) {
-    $prop: calc(#{rem($mobSize)} + #{$addSize} * (100vw / #{$maxWidth}));
+    $prop: calc(#{rem($mobSize)} + #{$addSize} * (100vw / #{v.$maxWidth}));
   }
 
 }

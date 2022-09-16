@@ -64,8 +64,8 @@ export default Vue.extend({
 
 <style lang="scss">
 
-@import "/src/styles/variables";
-@import "/src/styles/mixins";
+@import "/src/scss/globals/variables";
+@import "/src/scss/util/mixins";
 
 .account__content {
 

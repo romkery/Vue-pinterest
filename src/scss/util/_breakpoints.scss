@@ -1,0 +1,31 @@
+@use 'mixins' as m;
+
+$breakpoints-up: (
+        'xs': 0,
+        'sm': m.em(576),
+        'md': m.em(768),
+        'lg': m.em(992),
+        'xl': m.em(1200),
+        'xxl': m.em(1599.98)
+);
+
+$breakpoints-down: (
+        'xs': 0,
+        'sm': m.em(575.98),
+        'md': m.em(768.98),
+        'lg': m.em(992.98),
+        'xl': m.em(1200.98),
+        'xxl': m.em(1599.98)
+);
+
+@mixin breakpoint($size) {
+  @media(min-width: map-get($breakpoints-up, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @media(max-width: map-get($breakpoints-down, $size)) {
+    @content;
+  }
+}

@@ -117,7 +117,7 @@ export default Vue.extend({
 
 <style lang="scss">
 
-@import "./src/styles/mixins";
+@import "../../scss/util/mixins";
 
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .header {
@@ -184,7 +184,6 @@ export default Vue.extend({
       }
 
       input {
-        padding: 0 rem(30);
         height: rem(48);
         width: 100%;
         min-width: rem(40);

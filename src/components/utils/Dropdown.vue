@@ -39,7 +39,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-@import "src/styles/_mixins.scss";
+@import "../../scss/util/mixins";
 
 .el-dropdown-link {
   cursor: pointer;

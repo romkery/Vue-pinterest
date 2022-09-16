@@ -91,8 +91,8 @@ export default Layout.extend({
 
 <style lang="scss">
 
-@import './src/styles/variables';
-@import "./src/styles/mixins";
+@import '../../../scss/globals/variables';
+@import "../../../scss/util/mixins";
 
 .account {
   width: min(rem(925), 100%);
