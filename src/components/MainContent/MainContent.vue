@@ -8,8 +8,7 @@
 
 import Vue from 'vue';
 import ElementUi from 'element-ui';
-import {mapActions, mapGetters, mapState} from 'vuex';
-import Account from '@/components/MainContent/Account/Account';
+import {mapActions, mapGetters} from 'vuex';
 import Layout from '@/components/MainContent/Layout';
 
 Vue.use(ElementUi);
@@ -41,6 +40,8 @@ export default Vue.component('MainContent', {
 .main {
 
   &__content {
+    //margin: 0.625rem;
+    //max-width: 100vw;
   }
 
 }

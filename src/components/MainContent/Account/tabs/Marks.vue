@@ -28,17 +28,20 @@ export default Vue.component('Marks', {
 
 </script>
 
-<style lang="less">
+<style lang="scss">
+
+@use './src/scss/util/functions' as f;
+
 .marks {
-  margin-top: rem(60);
+  margin-top: f.rem(60);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 
   img {
-    max-width: min(30%, rem(62));
-    max-height: min(30%, rem(62));
+    max-width: min(30%, f.rem(62));
+    max-height: min(30%, f.rem(62));
   }
 
   h1 {
@@ -47,7 +50,7 @@ export default Vue.component('Marks', {
   }
 
   p {
-    max-width: rem(350);
+    max-width: f.rem(350);
   }
 }
 </style>

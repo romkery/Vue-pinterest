@@ -1,5 +1,5 @@
 @use './../util/breakpoints' as b;
-@import "../util/mixins";
+@use "./../util/functions" as f;
 
 @include b.breakpoint(xxl) {
   #main__line--7 {
@@ -8,8 +8,8 @@
 
   .pop-up-block {
     img {
-      max-width: rem(1000) !important;
-      max-height: rem(1000) !important;
+      max-width: f.rem(1000) !important;
+      max-height: f.rem(1000) !important;
     }
   }
 }
@@ -55,13 +55,13 @@
     display: none;
   }
 
-  .account__info-top {
-    justify-content: center;
-    margin-top: rem(20);
-  }
-
   .account__info {
-    max-width: rem(300) !important;
+    max-width: f.rem(300) !important;
+
+    &-top {
+      justify-content: center;
+      margin-top: f.rem(20);
+    }
 
     &-middle-item {
       flex-direction: column;
@@ -85,8 +85,8 @@
 
   .main__stats {
     img {
-      width: rem(30) !important;
-      height: rem(30) !important;
+      width: f.rem(30) !important;
+      height: f.rem(30) !important;
     }
   }
 
@@ -98,8 +98,8 @@
 
   .pop-up-block {
     img {
-      max-width: rem(600);
-      max-height: rem(600);
+      max-width: f.rem(600);
+      max-height: f.rem(600);
     }
   }
 }
@@ -111,19 +111,47 @@
 
   .pop-up-block {
     img {
-      max-width: rem(400);
-      max-height: rem(400);
+      max-width: f.rem(400);
+      max-height: f.rem(400);
     }
   }
+
+  .header__content {
+    &-search {
+      img {
+        display: none;
+      }
+    }
+
+    &-account {
+      margin-right: 0 !important;
+    }
+  }
+
+  .el-dropdown {
+    span {
+      span {
+        display: none;
+      }
+    }
+  }
+
+  .main__stats {
+    img {
+      width: 2.5rem !important;
+      height: 2.5rem !important;
+    }
+  }
+
+  .main__item {
+    max-width: f.rem(500) !important;
+  }
+
 }
 
 @include b.breakpoint(xs) {
   #main__line--2 {
     display: none;
-  }
-
-  .main__item {
-    max-width: rem(500) !important;
   }
 }
 

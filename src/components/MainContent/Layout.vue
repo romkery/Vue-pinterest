@@ -113,36 +113,34 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-@import "../../scss/util/mixins";
+@use "../../scss/util/functions" as f;
 
 .main {
 
   &__layout {
     display: flex;
     justify-content: center;
-    gap: rem(10);
-    padding: 0 rem(10);
+    gap: f.rem(10);
+    margin: 0 f.rem(10);
   }
 
 
   &__line {
     display: flex;
     flex-direction: column;
-    height: rem(5000);
+    height: f.rem(5000);
     justify-content: space-between;
     align-items: center;
-
   }
 
   &__item {
-    gap: rem(5);
     width: 100%;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: rem(16);
+      border-radius: f.rem(16);
       cursor: pointer;
     }
   }
@@ -153,30 +151,30 @@ export default Vue.extend({
     justify-content: space-between;
 
     h5 {
-      margin: rem(8) rem(10) 0 rem(10);
+      margin: f.rem(8) f.rem(10) 0 f.rem(10);
     }
 
     img {
-      width: rem(20);
-      height: rem(20);
-      margin-right: rem(4);
+      width: f.rem(20);
+      height: f.rem(20);
+      margin-right: f.rem(4);
     }
   }
 
 
   &__author {
     display: inline-flex;
-    margin: rem(8) rem(10) 0 rem(10);
+    margin: f.rem(8) f.rem(10) 0 f.rem(10);
     align-items: center;
 
     img {
-      width: rem(34);
-      height: rem(34);
-      border-radius: rem(20);
+      width: f.rem(34);
+      height: f.rem(34);
+      border-radius: f.rem(20);
     }
 
     p {
-      margin-right: rem(8);
+      margin-right: f.rem(8);
     }
   }
 
@@ -195,14 +193,14 @@ export default Vue.extend({
 
       p {
         color: white;
-        margin-left: rem(10);
+        margin-left: f.rem(10);
       }
     }
 
     &-img {
       background: url("./../../assets/img/preloader.png");
-      width: rem(90);
-      height: rem(90);
+      width: f.rem(90);
+      height: f.rem(90);
       background-size: cover;
     }
 

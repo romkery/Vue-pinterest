@@ -1,11 +1,15 @@
+@use './../util/functions' as f;
+@import './../globals/variables';
+
 html {
   box-sizing: border-box;
   font-size: 100%;
 }
 
-
 body {
-  margin: 0;
   padding: 0;
+  margin: 0;
+  background-color: f.theme-var($--theme-background);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden !important;
 }

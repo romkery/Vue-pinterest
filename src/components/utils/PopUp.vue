@@ -52,6 +52,8 @@ export default Vue.extend({
 
 <style lang="scss">
 
+@use './src/scss/util/functions' as m;
+
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .pop-up {
     -webkit-backdrop-filter: blur(33px);
@@ -73,15 +75,15 @@ export default Vue.extend({
     display: flex;
 
     img {
-      max-width: rem(1000);
-      max-height: rem(600);
-      border-radius: rem(16);
+      max-width: m.rem(1000);
+      max-height: m.rem(600);
+      border-radius: m.rem(16);
     }
 
     button {
-      margin-left: rem(-32);
-      width: rem(30);
-      height: rem(30);
+      margin-left: m.rem(-32);
+      width: m.rem(30);
+      height: m.rem(30);
       background: url("./../../assets/img/cancel.svg");
       border: none;
       opacity: 0.5;

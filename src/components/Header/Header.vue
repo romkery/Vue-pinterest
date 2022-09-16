@@ -6,13 +6,12 @@
     />
     <div class="header">
       <div class="header__content">
-        <img
-          src="https://pngimg.com/uploads/pinterest/pinterest_PNG45.png"
-          alt="Logo"
-          @click="$router.push('/home')"
-        >
         <button @click="$router.push('/home')">
           Home
+        </button>
+        <button @click="toggleTheme">
+          change
+          Theme
         </button>
         <div class="header__content-search">
           <img
@@ -27,17 +26,17 @@
             @keyup.enter="getQuery"
           >
         </div>
-        <dropdown
-          :users="users"
-          class="header__content-dropdown"
-          :set-profile="setProfile"
-        />
         <div
           class="header__content-account"
           @click="$router.push(`/account/${profile.id}`)"
         >
           <span>{{ getUserInitials }}</span>
         </div>
+        <dropdown
+          :users="users"
+          class="header__content-dropdown"
+          :set-profile="setProfile"
+        />
       </div>
     </div>
   </fragment>
@@ -62,6 +61,7 @@ export default Vue.extend({
   data() {
     return {
       userQuery: '',
+      isDark: false,
     };
   },
 
@@ -86,6 +86,18 @@ export default Vue.extend({
   methods: {
     ...mapActions('MainModule', ['setUserQuery', 'GetLayout', 'setLoading', 'removeLayout']),
     ...mapActions('AccountModule', ['setUserProfile', 'setMap']),
+
+    toggleTheme() {
+      if (this.isDark) {
+        document.getElementsByTagName('html')[0].classList.remove('dark');
+        document.getElementsByTagName('html')[0].setAttribute('class', 'light');
+      } else {
+        document.getElementsByTagName('html')[0].classList.remove('light');
+        document.getElementsByTagName('html')[0].setAttribute('class', 'dark');
+      }
+
+      this.isDark = !this.isDark;
+    },
 
     setProfile(id) {
       this.$router.push(`/account/${id}`);
@@ -117,13 +129,14 @@ export default Vue.extend({
 
 <style lang="scss">
 
-@import "../../scss/util/mixins";
+@use "../../scss/util/functions" as f;
+@use "../../scss/util/mixins" as m;
 
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .header {
     box-sizing: border-box;
-    background-blend-mode: overlay;
     background-color: #FFFFFF99;
+    background-blend-mode: overlay;
     -webkit-backdrop-filter: blur(33px);
     backdrop-filter: blur(33px);
   }
@@ -132,38 +145,30 @@ export default Vue.extend({
 
 .header {
   position: sticky;
-  display: block;
   top: 0;
-  width: 100%;
+  display: block;
   z-index: 9;
+  width: 100vw;
 
   &__content {
     display: flex;
     align-items: center;
-    height: rem(55);
     width: 100%;
-
-    img {
-      margin-left: rem(20);
-      width: rem(25);
-      height: rem(25);
-      cursor: pointer;
-      margin-right: rem(10);
-    }
+    height: f.rem(55);
 
     button {
-      width: rem(100);
-      height: rem(45);
-      border-radius: rem(16);
-      margin: 0 rem(10);
-      color: white;
+      width: f.rem(100);
+      height: f.rem(45);
+      margin: 0 f.rem(10);
       background-color: rgba(0, 0, 0, 1);
-      cursor: pointer;
       border: none;
-      @include adaptive_font(16, 10);
+      border-radius: f.rem(16);
+      cursor: pointer;
+      color: white;
+      @include m.adaptive_font(16, 10);
 
       @media (max-width: em(767)) {
-        height: rem(40);
+        height: f.rem(40);
       }
     }
 
@@ -172,29 +177,29 @@ export default Vue.extend({
     }
 
     &-search {
-      flex-grow: 1;
       display: flex;
+      flex-grow: 1;
 
       img {
         position: absolute;
-        margin-left: rem(8);
-        margin-top: rem(12);
-        width: rem(22);
-        height: rem(22);
+        width: f.rem(22);
+        height: f.rem(22);
+        margin-top: f.rem(12);
+        margin-left: f.rem(8);
       }
 
       input {
-        height: rem(48);
         width: 100%;
-        min-width: rem(40);
-        border: none;
-        border-radius: rem(20);
+        height: f.rem(48);
+        min-width: f.rem(40);
         background: rgba(0, 0, 0, 0.08);
-        @include adaptive_font(16, 10);
+        border: none;
+        border-radius: f.rem(20);
+        @include m.adaptive_font(16, 10);
         text-align: center;
 
         @media (max-width: em(767)) {
-          height: rem(40);
+          height: f.rem(40);
         }
       }
 
@@ -203,34 +208,34 @@ export default Vue.extend({
       }
     }
 
-    &-dropdown {
-      margin-left: min(rem(20), 2vw);
-
-      .el-dropdown-link {
-        @include adaptive_font(16, 8);
-      }
-    }
-
     &-account {
       display: flex;
-      align-items: center;
       justify-content: center;
-      min-height: rem(43);
-      min-width: rem(43);
-      border: rem(2) solid black;
+      align-items: center;
+      min-width: f.rem(43);
+      min-height: f.rem(43);
+      margin: 0 min(f.rem(20), 2vw);
+      border: f.rem(2) solid black;
+      border-radius: f.rem(35);
       cursor: pointer;
-      border-radius: rem(35);
       font-weight: 600;
-      margin: 0 min(rem(20), 2vw);
-      @include adaptive_font(16, 10);
+      @include m.adaptive_font(16, 10);
 
       @media (max-width: em(767)) {
-        min-height: rem(30);
-        min-width: rem(30);
+        min-width: f.rem(30);
+        min-height: f.rem(30);
       }
 
       span {
-        @include adaptive_font(16, 8)
+        @include m.adaptive_font(16, 8)
+      }
+    }
+
+    &-dropdown {
+      margin-right: min(f.rem(30), 3vw);
+
+      .el-dropdown-link {
+        @include m.adaptive_font(16, 8);
       }
     }
   }

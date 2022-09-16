@@ -64,8 +64,9 @@ export default Vue.extend({
 
 <style lang="scss">
 
-@import "/src/scss/globals/variables";
-@import "/src/scss/util/mixins";
+@use "/src/scss/globals/variables" as v;
+@use "/src/scss/util/mixins" as m;
+@use "/src/scss/util/functions" as f;
 
 .account__content {
 
@@ -73,8 +74,8 @@ export default Vue.extend({
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: rem(20);
-    margin: 0 rem(10);
+    gap: f.rem(20);
+    margin: 0 f.rem(10);
 
     &-tab {
       $self: &;
@@ -82,7 +83,7 @@ export default Vue.extend({
       &-wrap {
         display: flex;
         align-items: center;
-        padding: rem(15) 0;
+        padding: f.rem(15) 0;
         position: relative;
         //font-weight: 600;
         opacity: 0.5;
@@ -90,13 +91,13 @@ export default Vue.extend({
       }
 
       i {
-        margin-right: rem(6);
-        @include adaptive_font(16, 5);
-        margin-bottom: rem(2);
+        margin-right: f.rem(6);
+        @include m.adaptive_font(16, 5);
+        margin-bottom: f.rem(2);
       }
 
       p {
-        @include adaptive_font(16, 5);
+        @include m.adaptive_font(16, 5);
         font-family: auto, serif;
         line-height: 0;
       }
@@ -110,10 +111,10 @@ export default Vue.extend({
           &::before {
             content: '';
             width: 100%;
-            background-color: $accent;
-            height: rem(2);
+            background-color: v.$accent;
+            height: f.rem(2);
             position: absolute;
-            top: rem(-1);
+            top: f.rem(-1);
           }
         }
       }
@@ -123,14 +124,14 @@ export default Vue.extend({
   &-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, rem(295)));
+    grid-template-columns: repeat(3, minmax(0, f.rem(295)));
     justify-content: center;
-    grid-gap: rem(10);
+    grid-gap: f.rem(10);
 
     img {
       aspect-ratio: 1 / 1;
       width: 100%;
-      border-radius: rem(16);
+      border-radius: f.rem(16);
       object-fit: cover;
       cursor: pointer;
     }

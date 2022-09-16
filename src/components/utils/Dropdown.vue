@@ -6,7 +6,8 @@
         @command="setProfile"
       >
         <span class="el-dropdown-link">
-          Change profile<i class="el-icon-arrow-down el-icon--right" />
+          <span>Change profile</span>
+          <i class="el-icon-arrow-down el-icon--right" />
         </span>
         <el-dropdown-menu
           slot="dropdown"
@@ -39,7 +40,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-@import "../../scss/util/mixins";
+@use "../../scss/util/mixins" as m;
 
 .el-dropdown-link {
   cursor: pointer;
@@ -48,6 +49,6 @@ export default Vue.extend({
 }
 
 .el-icon-arrow-down {
-  @include adaptive_font(12, 8)
+  @include m.adaptive_font(12, 8)
 }
 </style>

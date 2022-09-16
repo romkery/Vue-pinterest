@@ -1,16 +1,17 @@
 @use 'sass:math';
-@use 'src/scss/globals/variables' as v;
+@use './../globals/variables' as v;
+@use './../util/functions' as f;
 
 @mixin adaptive_font($pcSize, $mobSize) {
   $addSize: $pcSize - $mobSize;
   $addMobSize: $addSize + $addSize * 0.7;
 
-  @media (max-width: em(767)) {
-    font-size: calc(#{ rem($mobSize) } + #{ $addMobSize } * ((100vw - 150px) / #{ v.$maxWidth }));
+  @media (max-width: f.em(767)) {
+    font-size: calc(#{ f.rem($mobSize) } + #{ $addMobSize } * ((100vw - 150px) / #{ v.$maxWidth }));
   }
 
-  @media (min-width: em(767)) {
-    font-size: calc(#{rem($mobSize)} + #{$addSize} * (100vw / #{v.$maxWidth}));
+  @media (min-width: f.em(767)) {
+    font-size: calc(#{f.rem($mobSize)} + #{$addSize} * (100vw / #{v.$maxWidth}));
   }
 
 }
@@ -19,31 +20,19 @@
   $addSize: $pcSize - $mobSize;
   $addMobSize: $addSize + $addSize * 0.7;
 
-  @media (max-width: em(767)) {
-    $prop: calc(#{ rem($mobSize) } + #{ $addMobSize } * ((100vw - 150px) / #{ v.$maxWidth }));
+  @media (max-width: f.em(767)) {
+    $prop: calc(#{ f.rem($mobSize) } + #{ $addMobSize } * ((100vw - 150px) / #{ v.$maxWidth }));
   }
 
-  @media (min-width: em(767)) {
-    $prop: calc(#{rem($mobSize)} + #{$addSize} * (100vw / #{v.$maxWidth}));
+  @media (min-width: f.em(767)) {
+    $prop: calc(#{f.rem($mobSize)} + #{$addSize} * (100vw / #{v.$maxWidth}));
   }
 
 }
 
-@function rem($pixels) {
-
-  @if (math.is-unitless($pixels)) {
-    @return math.div($pixels, 16) + rem;
-  } @else {
-    @error "Need unitless number";
-  }
-}
-
-@function em($pixels) {
-
-  @if (math.is-unitless($pixels)) {
-    @return math.div($pixels, 16) + em;
-  } @else {
-    @error "Need unitless number";
+@mixin spread-map($map: ()) {
+  @each $key, $value in $map {
+    #{$key}: $value;
   }
 }
 

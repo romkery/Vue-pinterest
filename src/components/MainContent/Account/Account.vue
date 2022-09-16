@@ -91,105 +91,110 @@ export default Layout.extend({
 
 <style lang="scss">
 
-@import '../../../scss/globals/variables';
-@import "../../../scss/util/mixins";
+@use '../../../scss/globals/variables' as v;
+@use "../../../scss/util/mixins" as m ;
+@use "../../../scss/util/functions" as f ;
 
 .account {
-  width: min(rem(925), 100%);
-  height: 100%;
   display: flex;
   flex-direction: column;
+  width: min(f.rem(925), 100%);
+  height: 100%;
   margin: 0 auto;
 
   .container {
-    margin: rem(10);
+    margin: f.rem(10);
   }
 
   hr {
-    background-color: black;
-    opacity: .5;
-    border-width: rem(0.5);
     margin: 0;
+    background-color: black;
+    border-width: f.rem(0.5);
+    opacity: .5;
   }
 
   &__header {
-    width: 100%;
-    margin-top: rem(30);
-    margin-bottom: rem(20);
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: f.rem(30);
+    margin-bottom: f.rem(20);
 
     &-avatar {
-      width: min(50vw, rem(150));
-      height: min(50vw, rem(150));
+      width: min(50vw, f.rem(150));
+      height: min(50vw, f.rem(150));
+      margin: 0 f.rem(90) 0 f.rem(50);
       border-radius: 50%;
-      margin: 0 rem(90) 0 rem(50);
       object-fit: cover;
       cursor: pointer;
     }
   }
 
   &__info {
-    width: min(100%, rem(400));
     display: flex;
     flex-direction: column;
-    @include adaptive_font(14, 12);
+    width: min(100%, f.rem(400));
+    @include m.adaptive_font(14, 12);
 
     &-top {
       display: flex;
       flex-direction: row;
       align-items: center;
-      margin-bottom: rem(15);
-      gap: rem(15);
+      margin-bottom: f.rem(15);
+      gap: f.rem(15);
 
-      @media (max-width: em(240)) {
+      @media (max-width: f.em(240)) {
         flex-direction: column;
         gap: 1rem;
+
+        :last-child {
+          display: none;
+        }
+        margin-bottom: 0;
       }
 
       p {
         margin: 0;
-        @include adaptive_font(40, 12);
-        //font-size: clamp(.5rem, 1rem + 1vw, 1.5rem);
+        @include m.adaptive_font(40, 12);
         display: block;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-
+      
       button {
-        width: max(rem(20), 100%);
-        height: rem(30);
-        @include adaptive_font(16, 8);
+        width: max(f.rem(20), 100%);
+        height: f.rem(30);
+        @include m.adaptive_font(16, 8);
         background: transparent;
-        border-radius: rem(5);
-        border: solid rem(1) $accent;
-        font-weight: 600;
+        border: solid f.rem(1) v.$accent;
+        border-radius: f.rem(5);
         cursor: pointer;
+        font-weight: 600;
       }
 
       button:hover {
-        color: white;
         background: #007bff;
+        color: white;
         transition: 0.2s ease-in;
       }
 
       img {
-        width: rem(25);
-        height: rem(25);
+        width: f.rem(25);
+        height: f.rem(25);
       }
 
     }
 
     &-middle {
       display: flex;
-      margin-top: rem(20);
-      gap: min(2.5rem, .5rem);
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      margin-top: f.rem(20);
+      gap: min(2.5rem, .5rem);
 
-      @media(max-width: em(240)) {
+      @media(max-width: f.em(240)) {
         flex-direction: column;
       }
 
@@ -197,19 +202,19 @@ export default Layout.extend({
         display: flex;
 
         h4 {
-          @include adaptive_font(14, 8);
-          margin: 0 rem(4) 0 0;
+          @include m.adaptive_font(14, 8);
+          margin: 0 f.rem(4) 0 0;
         }
       }
     }
 
     &-bottom {
-      margin-top: rem(20);
+      margin-top: f.rem(20);
 
       p, h3 {
         margin: 0;
-        line-height: rem(25);
         font-size: 1rem;
+        line-height: f.rem(25);
       }
     }
   }
