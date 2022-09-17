@@ -1,35 +1,37 @@
-$accent: #007bff;
+$accent-color: hsl(211, 100%, 50%);
 $fontSize: 16;
 $maxWidth: 3840;
 
-$--theme-primary: --theme-primary;
-$--theme-secondary: --theme-secondary;
-$--theme-surface: --theme-surface;
-$--theme-background: --theme-background;
-$--theme-on-primary: --theme-on-primary;
-$--theme-on-secondary: --theme-on-secondary;
-$--theme-on-surface: --theme-on-surface;
-$--background-color: --background-color;
+
+$--background-primary: --background-color;
+$--background-secondary: --background-secondary;
+$--background-header: --background-header;
+$--font-color: --font-color;
+
+$--background-btn: --background-btn;
+$--hover-btn: --hover-btn;
+$--color-btn: --color-btn;
+
+$--accent-color: --accent-color;
 
 $theme-map-light: (
-        $--theme-primary: #d75893,
-        $--theme-secondary: #9b4dca,
-        $--theme-surface: #fff,
-        $--theme-background: #fafafa,
-        $--theme-on-primary: #fff,
-        $--theme-on-secondary: #fff,
-        $--theme-on-surface: #f3f3f3,
-        $--background-color:hsla(0, 7%, 94%, 0.99)
+        $--background-primary: hsla(0, 7%, 94%, 0.99),
+        $--background-secondary: hsla(0, 0%, 0%, 0.08),
+        $--background-header: hsla(0, 0%, 100%, 0.6),
+        $--font-color: hsl(0, 0%, 7%),
+        $--background-btn: hsl(0, 0%, 7%),
+        $--hover-btn: hsl(0, 0%, 8%),
+        $--color-btn: hsla(0, 7%, 94%, 0.99),
+        $--accent-color: $accent-color
 );
-
 // Override the default light theme
 $theme-map-dark: (
-        $--theme-primary: #f34c84,
-        $--theme-secondary: #c297dc,
-        $--theme-surface: #2f2b2b,
-        $--theme-background: #1b1919,
-        $--theme-on-primary: #443e42,
-        $--theme-on-secondary: #000,
-        $--theme-on-surface: #f5f1f1,
-        $--background-color:hsla(180, 36%, 9%, 0.12)
+        $--background-primary:hsla(0, 0%, 7%, 0.94),
+        $--background-secondary: hsla(0, 0%, 100%, 0.15),
+        $--background-header: hsla(0, 0%, 7%, 0.42),
+        $--font-color: hsla(0, 7%, 94%, 0.99),
+        $--background-btn: hsla(0, 7%, 94%, 0.99),
+        $--hover-btn: hsla(0, 7%, 94%, 0.8),
+        $--color-btn: hsl(0, 0%, 7%),
+        $--accent-color: $accent-color
 );

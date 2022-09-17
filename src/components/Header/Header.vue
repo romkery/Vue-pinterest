@@ -14,10 +14,7 @@
           Theme
         </button>
         <div class="header__content-search">
-          <img
-            src="./../../assets/img/search.svg"
-            alt="search"
-          >
+          <i class="el-icon-search" />
           <input
             id="s3"
             v-model="userQuery"
@@ -81,6 +78,7 @@ export default Vue.extend({
 
   mounted() {
     this.setMap();
+    document.getElementsByTagName('html')[0].setAttribute('class', 'light');
   },
 
   methods: {
@@ -131,11 +129,11 @@ export default Vue.extend({
 
 @use "../../scss/util/functions" as f;
 @use "../../scss/util/mixins" as m;
+@import "./src/scss/globals/variables";
 
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .header {
     box-sizing: border-box;
-    background-color: #FFFFFF99;
     background-blend-mode: overlay;
     -webkit-backdrop-filter: blur(33px);
     backdrop-filter: blur(33px);
@@ -148,7 +146,8 @@ export default Vue.extend({
   top: 0;
   display: block;
   z-index: 9;
-  width: 100vw;
+  background-color: f.theme-var($--background-header);
+  border-bottom: f.rem(1) solid f.theme-var($--font-color);
 
   &__content {
     display: flex;
@@ -160,11 +159,11 @@ export default Vue.extend({
       width: f.rem(100);
       height: f.rem(45);
       margin: 0 f.rem(10);
-      background-color: rgba(0, 0, 0, 1);
+      background-color: f.theme-var($--background-btn);
       border: none;
       border-radius: f.rem(16);
       cursor: pointer;
-      color: white;
+      color: f.theme-var($--color-btn);
       @include m.adaptive_font(16, 10);
 
       @media (max-width: em(767)) {
@@ -173,30 +172,28 @@ export default Vue.extend({
     }
 
     button:hover {
-      background-color: rgba(0, 0, 0, .8);
+      background-color: f.theme-var($--hover-btn);
     }
 
     &-search {
       display: flex;
       flex-grow: 1;
+      align-items: center;
 
-      img {
-        position: absolute;
-        width: f.rem(22);
-        height: f.rem(22);
-        margin-top: f.rem(12);
-        margin-left: f.rem(8);
+      i {
+        display: none;
       }
 
       input {
         width: 100%;
-        height: f.rem(48);
+        height: f.rem(44);
         min-width: f.rem(40);
-        background: rgba(0, 0, 0, 0.08);
+        background: f.theme-var($--background-secondary);
         border: none;
         border-radius: f.rem(20);
-        @include m.adaptive_font(16, 10);
+        color: f.theme-var($--font-color);
         text-align: center;
+        @include m.adaptive_font(16, 10);
 
         @media (max-width: em(767)) {
           height: f.rem(40);
@@ -215,7 +212,7 @@ export default Vue.extend({
       min-width: f.rem(43);
       min-height: f.rem(43);
       margin: 0 min(f.rem(20), 2vw);
-      border: f.rem(2) solid black;
+      border: f.rem(2) solid f.theme-var($--font-color);
       border-radius: f.rem(35);
       cursor: pointer;
       font-weight: 600;
@@ -233,6 +230,10 @@ export default Vue.extend({
 
     &-dropdown {
       margin-right: min(f.rem(30), 3vw);
+
+      .el-dropdown-menu {
+        background: none !important;
+      }
 
       .el-dropdown-link {
         @include m.adaptive_font(16, 8);

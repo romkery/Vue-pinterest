@@ -61,12 +61,10 @@ export default Vue.extend({
 
 </script>
 
-
 <style lang="scss">
-
-@use "/src/scss/globals/variables" as v;
 @use "/src/scss/util/mixins" as m;
 @use "/src/scss/util/functions" as f;
+@import "/src/scss/globals/variables";
 
 .account__content {
 
@@ -111,7 +109,7 @@ export default Vue.extend({
           &::before {
             content: '';
             width: 100%;
-            background-color: v.$accent;
+            background-color: f.theme-var($--accent-color);
             height: f.rem(2);
             position: absolute;
             top: f.rem(-1);

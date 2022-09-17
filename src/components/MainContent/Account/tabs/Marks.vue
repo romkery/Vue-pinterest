@@ -1,9 +1,6 @@
 <template>
   <div class="marks">
-    <img
-      :src="this.userSvg"
-      alt="userSvg"
-    >
+    <i class="el-icon-user" />
     <h1>Фото с вами</h1>
     <p>Здесь показываются люди, отметившие вас на фото.</p>
   </div>
@@ -31,6 +28,7 @@ export default Vue.component('Marks', {
 <style lang="scss">
 
 @use './src/scss/util/functions' as f;
+@use './src/scss/util/mixins' as m;
 
 .marks {
   margin-top: f.rem(60);
@@ -39,9 +37,8 @@ export default Vue.component('Marks', {
   align-items: center;
   text-align: center;
 
-  img {
-    max-width: min(30%, f.rem(62));
-    max-height: min(30%, f.rem(62));
+  i {
+    @include m.adaptive_font(200, 40)
   }
 
   h1 {

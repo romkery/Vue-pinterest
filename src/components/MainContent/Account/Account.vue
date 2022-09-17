@@ -14,10 +14,7 @@
             <div class="account__info-top">
               <p>{{ profile.nickname }}</p>
               <button>Редактировать профиль</button>
-              <img
-                src="./../../../assets/img/settings.svg"
-                alt="setting-svg"
-              >
+              <i class="el-icon-setting" />
             </div>
             <div class="account__info-middle">
               <div
@@ -91,9 +88,9 @@ export default Layout.extend({
 
 <style lang="scss">
 
-@use '../../../scss/globals/variables' as v;
 @use "../../../scss/util/mixins" as m ;
 @use "../../../scss/util/functions" as f ;
+@import '../../../scss/globals/variables';
 
 .account {
   display: flex;
@@ -162,27 +159,28 @@ export default Layout.extend({
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      
+
       button {
         width: max(f.rem(20), 100%);
         height: f.rem(30);
         @include m.adaptive_font(16, 8);
         background: transparent;
-        border: solid f.rem(1) v.$accent;
+        border: solid f.rem(1) f.theme-var($--accent-color);
         border-radius: f.rem(5);
         cursor: pointer;
         font-weight: 600;
+        color: f.theme-var($--font-color);
       }
 
       button:hover {
-        background: #007bff;
-        color: white;
+        background: f.theme-var($--accent-color);
         transition: 0.2s ease-in;
       }
 
-      img {
-        width: f.rem(25);
-        height: f.rem(25);
+      i {
+        color: f.theme-var($--font-color);
+        @include m.adaptive_font(30, 15);
+        cursor: pointer;
       }
 
     }

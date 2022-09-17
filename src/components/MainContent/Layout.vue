@@ -121,7 +121,7 @@ export default Vue.extend({
     display: flex;
     justify-content: center;
     gap: f.rem(10);
-    margin: 0 f.rem(10);
+    margin: f.rem(10) f.rem(10);
   }
 
 
