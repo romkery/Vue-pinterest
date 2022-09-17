@@ -6,6 +6,7 @@
   >
     <div class="pop-up-block">
       <img
+        loading="lazy"
         :src="popSrc"
         alt="ss"
         @click="setLiked"

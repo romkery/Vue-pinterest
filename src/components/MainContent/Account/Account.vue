@@ -5,6 +5,7 @@
       <div class="container">
         <div class="account__header">
           <img
+            loading="lazy"
             :src="profile.avatar"
             alt="Avatar"
             class="account__header-avatar"

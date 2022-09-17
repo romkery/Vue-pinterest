@@ -23,6 +23,7 @@
       >
         <img
           :key="elIndex"
+          loading="lazy"
           :src="el.pictureSrc"
           alt="pict"
           @click="showPopUp"
@@ -32,6 +33,7 @@
             {{ getRandomName() }}
           </h5>
           <img
+            loading="lazy"
             :src="getRandomBool()"
             alt="heartSvg"
             @click="like"
@@ -39,6 +41,7 @@
         </div>
         <div class="main__author">
           <img
+            loading="lazy"
             :src="el.avatarSrc"
             alt="Avatar"
             @click="showPopUp"

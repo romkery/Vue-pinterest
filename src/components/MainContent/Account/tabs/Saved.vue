@@ -3,6 +3,7 @@
     <img
       v-for="(img, index) in saved"
       :key="index"
+      loading="lazy"
       :src="img"
       alt="Grid"
       @click="showPopUp()"
