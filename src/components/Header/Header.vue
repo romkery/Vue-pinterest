@@ -9,10 +9,6 @@
         <button @click="$router.push('/home')">
           Home
         </button>
-        <button @click="toggleTheme">
-          change
-          Theme
-        </button>
         <div class="header__content-search">
           <i class="el-icon-search" />
           <input
@@ -23,6 +19,17 @@
             @keyup.enter="getQuery"
           >
         </div>
+        <el-tooltip
+          content="Dark Theme"
+          placement="top"
+          :effect="!isDark ? 'dark' : 'light'"
+          popper-class="header__content-tooltip"
+        >
+          <el-switch
+            v-model="isDark"
+            @change="toggleTheme"
+          />
+        </el-tooltip>
         <div
           class="header__content-account"
           @click="$router.push(`/account/${profile.id}`)"
@@ -86,6 +93,7 @@ export default Vue.extend({
     ...mapActions('AccountModule', ['setUserProfile', 'setMap']),
 
     toggleTheme() {
+      this.isDark = !this.isDark;
       if (this.isDark) {
         document.getElementsByTagName('html')[0].classList.remove('dark');
         document.getElementsByTagName('html')[0].setAttribute('class', 'light');
@@ -93,7 +101,6 @@ export default Vue.extend({
         document.getElementsByTagName('html')[0].classList.remove('light');
         document.getElementsByTagName('html')[0].setAttribute('class', 'dark');
       }
-
       this.isDark = !this.isDark;
     },
 
@@ -127,8 +134,9 @@ export default Vue.extend({
 
 <style lang="scss">
 
-@use "../../scss/util/functions" as f;
-@use "../../scss/util/mixins" as m;
+@use "./../../scss/util/functions" as f;
+@use "./../../scss/util/mixins" as m;
+@use './../../scss/util/breakpoints' as b;
 @import "./src/scss/globals/variables";
 
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
@@ -152,23 +160,19 @@ export default Vue.extend({
   &__content {
     display: flex;
     align-items: center;
-    width: 100%;
     height: f.rem(55);
+    margin: 0 f.rem(10);
+    gap: min(f.rem(10), 10vh);
 
     button {
       width: f.rem(100);
-      height: f.rem(45);
-      margin: 0 f.rem(10);
+      height: f.rem(42);
       background-color: f.theme-var($--background-btn);
       border: none;
       border-radius: f.rem(16);
       cursor: pointer;
       color: f.theme-var($--color-btn);
       @include m.adaptive_font(16, 10);
-
-      @media (max-width: em(767)) {
-        height: f.rem(40);
-      }
     }
 
     button:hover {
@@ -186,7 +190,7 @@ export default Vue.extend({
 
       input {
         width: 100%;
-        height: f.rem(44);
+        height: f.rem(42);
         min-width: f.rem(40);
         background: f.theme-var($--background-secondary);
         border: none;
@@ -194,31 +198,31 @@ export default Vue.extend({
         color: f.theme-var($--font-color);
         text-align: center;
         @include m.adaptive_font(16, 10);
-
-        @media (max-width: em(767)) {
-          height: f.rem(40);
-        }
       }
 
       :hover {
-        background: rgba(0, 0, 0, 0.10);
+        background: f.theme-var($--hover-input-bg);
       }
     }
 
+    //Switch with tooltip
+    &-tooltip {
+      color: f.theme-var($--background-primary)
+    }
+
     &-account {
+      font-weight: 600;
+      @include m.adaptive_font(16, 10);
       display: flex;
       justify-content: center;
       align-items: center;
       min-width: f.rem(43);
       min-height: f.rem(43);
-      margin: 0 min(f.rem(20), 2vw);
       border: f.rem(2) solid f.theme-var($--font-color);
       border-radius: f.rem(35);
       cursor: pointer;
-      font-weight: 600;
-      @include m.adaptive_font(16, 10);
 
-      @media (max-width: em(767)) {
+      @include b.breakpoint-down(md) {
         min-width: f.rem(30);
         min-height: f.rem(30);
       }
@@ -229,7 +233,6 @@ export default Vue.extend({
     }
 
     &-dropdown {
-      margin-right: min(f.rem(30), 3vw);
 
       .el-dropdown-menu {
         background: none !important;
@@ -237,6 +240,21 @@ export default Vue.extend({
 
       .el-dropdown-link {
         @include m.adaptive_font(16, 8);
+      }
+
+      @include b.breakpoint-down(sm) {
+        .el-dropdown {
+          span {
+            span {
+              display: none;
+            }
+          }
+        }
+
+        i {
+          margin: 0;
+          font-size: 1rem !important;
+        }
       }
     }
   }

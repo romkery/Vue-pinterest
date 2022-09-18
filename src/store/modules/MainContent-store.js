@@ -111,7 +111,7 @@ const MainContentStore = {
                         commit('ADD_COUNT', 2);
                     }
 
-                    let marginCount = Math.floor(Math.random() * (100 - 85 + 1)) + 85;
+                    let marginCount = Math.floor(Math.random() * (100 - 100 + 1)) + 100;
                     let heightCount = (Math.floor(Math.random() * 10) + 5) * 60;
                     commit('SET_ITEM_ID', 1);
                     commit('SET_LAYOUT', {

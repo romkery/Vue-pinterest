@@ -53,7 +53,8 @@ export default Vue.extend({
 
 <style lang="scss">
 
-@use './src/scss/util/functions' as m;
+@use './src/scss/util/functions' as f;
+@use './src/scss/util/breakpoints' as b;
 
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
   .pop-up {
@@ -72,19 +73,20 @@ export default Vue.extend({
   justify-content: center;
   background-color: rgba(0, 0, 0, .7);
 
+
   &-block {
     display: flex;
 
     img {
-      max-width: m.rem(1000);
-      max-height: m.rem(600);
-      border-radius: m.rem(16);
+      max-width: min(f.rem(1400), 90vw);
+      max-height: min(f.rem(1000), 90vh);
+      border-radius: f.rem(16);
     }
 
     button {
-      margin-left: m.rem(-32);
-      width: m.rem(30);
-      height: m.rem(30);
+      margin-left: f.rem(-32);
+      width: f.rem(30);
+      height: f.rem(30);
       background: url("./../../assets/img/cancel.svg");
       border: none;
       opacity: 0.5;
@@ -93,6 +95,20 @@ export default Vue.extend({
 
     button:hover {
       opacity: 1;
+    }
+
+    @include b.breakpoint(xxl) {
+      img {
+        max-width: min(f.rem(2000), 90vw);
+        max-height: min(f.rem(2000), 90vh);
+      }
+    }
+
+    @include b.breakpoint-down(sm) {
+      img {
+        max-width: min(f.rem(400), 90vw);
+        max-height: min(f.rem(400), 90vh);
+      }
     }
   }
 }

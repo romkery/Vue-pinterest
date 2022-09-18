@@ -1,0 +1,73 @@
+@use './../util/breakpoints' as b;
+
+@include b.breakpoint(xxl) {
+  #main__line--7 {
+    display: flex;
+  }
+}
+
+@include b.breakpoint-down(xxl) {
+  #main__line--7 {
+    display: none;
+  }
+}
+
+@include b.breakpoint(xl) {
+  #main__line--6 {
+    display: flex;
+  }
+}
+
+@include b.breakpoint-down(xl) {
+  #main__line--6 {
+    display: none;
+  }
+}
+
+@include b.breakpoint(lg) {
+  #main__line--5 {
+    display: flex;
+  }
+}
+
+@include b.breakpoint-down(lg) {
+  #main__line--5 {
+    display: none;
+  }
+}
+
+@include b.breakpoint(md) {
+  #main__line--4 {
+    display: flex;
+  }
+}
+
+@include b.breakpoint-down(md) {
+  #main__line--4 {
+    display: none;
+  }
+}
+
+@include b.breakpoint(sm) {
+  #main__line--3 {
+    display: flex;
+  }
+}
+
+@include b.breakpoint-down(sm) {
+  #main__line--3 {
+    display: none;
+  }
+}
+
+@include b.breakpoint(xs) {
+  #main__line--2 {
+    display: none;
+  }
+}
+
+@include b.breakpoint-down(xs) {
+  #main__line--2 {
+    display: flex;
+  }
+}

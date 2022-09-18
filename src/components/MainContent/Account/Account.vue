@@ -90,7 +90,8 @@ export default Layout.extend({
 <style lang="scss">
 
 @use "../../../scss/util/mixins" as m ;
-@use "../../../scss/util/functions" as f ;
+@use "../../../scss/util/functions" as f;
+@use "../../../scss/util/breakpoints" as b;
 @import '../../../scss/globals/variables';
 
 .account {
@@ -128,6 +129,14 @@ export default Layout.extend({
       object-fit: cover;
       cursor: pointer;
     }
+
+    @include b.breakpoint-down(md) {
+      flex-direction: column !important;
+
+      img {
+        margin: 0;
+      }
+    }
   }
 
   &__info {
@@ -135,6 +144,9 @@ export default Layout.extend({
     flex-direction: column;
     width: min(100%, f.rem(400));
     @include m.adaptive_font(14, 12);
+    @include b.breakpoint-down(md) {
+      max-width: f.rem(300) !important;
+    }
 
     &-top {
       display: flex;
@@ -143,9 +155,14 @@ export default Layout.extend({
       margin-bottom: f.rem(15);
       gap: f.rem(15);
 
-      @media (max-width: f.em(240)) {
+      @include b.breakpoint-down(md) {
+        justify-content: center;
+        margin-top: f.rem(20);
+      }
+
+      @include b.breakpoint-down(f.em(240)) {
         flex-direction: column;
-        gap: 1rem;
+        gap: f.rem(10);
 
         :last-child {
           display: none;
@@ -169,8 +186,8 @@ export default Layout.extend({
         border: solid f.rem(1) f.theme-var($--accent-color);
         border-radius: f.rem(5);
         cursor: pointer;
-        font-weight: 600;
         color: f.theme-var($--font-color);
+        font-weight: 600;
       }
 
       button:hover {
@@ -180,8 +197,8 @@ export default Layout.extend({
 
       i {
         color: f.theme-var($--font-color);
-        @include m.adaptive_font(30, 15);
         cursor: pointer;
+        @include m.adaptive_font(30, 15);
       }
 
     }
@@ -193,7 +210,7 @@ export default Layout.extend({
       margin-top: f.rem(20);
       gap: min(2.5rem, .5rem);
 
-      @media(max-width: f.em(240)) {
+      @include b.breakpoint-down(f.em(220)) {
         flex-direction: column;
       }
 
@@ -204,19 +221,25 @@ export default Layout.extend({
           @include m.adaptive_font(14, 8);
           margin: 0 f.rem(4) 0 0;
         }
-      }
-    }
 
-    &-bottom {
-      margin-top: f.rem(20);
-
-      p, h3 {
-        margin: 0;
-        font-size: 1rem;
-        line-height: f.rem(25);
+        @include b.breakpoint-down(md) {
+          flex-direction: column;
+          align-items: center;
+        }
       }
     }
   }
+
+  &-bottom {
+    margin-top: f.rem(20);
+
+    p, h3 {
+      margin: 0;
+      font-size: 1rem;
+      line-height: f.rem(25);
+    }
+  }
+
 
   &__content {
     display: flex;

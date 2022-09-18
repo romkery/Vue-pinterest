@@ -117,6 +117,7 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 @use "../../scss/util/functions" as f;
+@use "../../scss/util/breakpoints" as b;
 
 .main {
 
@@ -146,6 +147,10 @@ export default Vue.extend({
       border-radius: f.rem(16);
       cursor: pointer;
     }
+
+    @include b.breakpoint-down(sm) {
+      max-width: f.rem(500) !important;
+    }
   }
 
   &__stats {
@@ -158,9 +163,16 @@ export default Vue.extend({
     }
 
     img {
-      width: f.rem(20);
-      height: f.rem(20);
+      width: f.rem(30);
+      height: f.rem(30);
       margin-right: f.rem(4);
+    }
+
+    @include b.breakpoint-down(sm) {
+      img {
+        width: f.rem(40) !important;
+        height: f.rem(40) !important;
+      }
     }
   }
 

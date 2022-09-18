@@ -13,6 +13,7 @@ $--hover-btn: --hover-btn;
 $--color-btn: --color-btn;
 
 $--accent-color: --accent-color;
+$--hover-input-bg: --hover-input-bg;
 
 $theme-map-light: (
         $--background-primary: hsla(0, 7%, 94%, 0.99),
@@ -22,7 +23,8 @@ $theme-map-light: (
         $--background-btn: hsl(0, 0%, 7%),
         $--hover-btn: hsl(0, 0%, 8%),
         $--color-btn: hsla(0, 7%, 94%, 0.99),
-        $--accent-color: $accent-color
+        $--accent-color: $accent-color,
+        $--hover-input-bg: hsla(0, 0%, 0%, 0.13)
 );
 // Override the default light theme
 $theme-map-dark: (
@@ -33,5 +35,6 @@ $theme-map-dark: (
         $--background-btn: hsla(0, 7%, 94%, 0.99),
         $--hover-btn: hsla(0, 7%, 94%, 0.8),
         $--color-btn: hsl(0, 0%, 7%),
-        $--accent-color: $accent-color
+        $--accent-color: $accent-color,
+        $--hover-input-bg: hsl(0 0% 100% / 0.20)
 );

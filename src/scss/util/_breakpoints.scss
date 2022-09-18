@@ -19,13 +19,25 @@ $breakpoints-down: (
 );
 
 @mixin breakpoint($size) {
-  @media(min-width: map-get($breakpoints-up, $size)) {
-    @content;
+  @if (map-get($breakpoints-up, $size)) {
+    @media(min-width: map-get($breakpoints-up, $size)) {
+      @content;
+    }
+  } @else {
+    @media(min-width: $size) {
+      @content;
+    }
   }
 }
 
 @mixin breakpoint-down($size) {
-  @media(max-width: map-get($breakpoints-down, $size)) {
-    @content;
+  @if (map-get($breakpoints-down, $size)) {
+    @media(max-width: map-get($breakpoints-down, $size)) {
+      @content;
+    }
+  } @else {
+    @media(max-width: $size) {
+      @content;
+    }
   }
 }
