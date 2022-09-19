@@ -1,15 +1,14 @@
 <template>
   <div class="main__layout">
     <div
+      v-if="getIsLoading"
       class="main__loading"
     >
-      <div class="main__loading-block">
-        <img
-          src="../../../assets/img/preloader.png"
-          alt="preloader"
-        >
-        <P>Подождите, загружается...</P>
-      </div>
+      <img
+        src="../../../assets/img/preloader.png"
+        alt="preloader"
+      >
+      <P>Подождите, загружается...</P>
     </div>
     <div
       v-for="(item, itIndex) in getLayoutElements"
@@ -89,7 +88,6 @@ export default Vue.extend({
       } else {
         return require('../../../assets/img/heart.svg');
       }
-      // return (Math.floor(Math.random() * 2) === 1) ? './../../assets/img/liked.svg' : './../../assets/img/heart.svg';
     },
     showPopUp() {
       let target = event.target;
@@ -126,17 +124,17 @@ export default Vue.extend({
   &__layout {
     display: flex;
     justify-content: center;
-    gap: f.rem(10);
     margin: f.rem(10) f.rem(10);
+    gap: f.rem(10);
   }
 
 
   &__line {
     display: flex;
     flex-direction: column;
-    height: f.rem(5000);
     justify-content: space-between;
     align-items: center;
+    height: f.rem(5000);
   }
 
   &__item {
@@ -145,8 +143,8 @@ export default Vue.extend({
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
       border-radius: f.rem(16);
+      object-fit: cover;
       cursor: pointer;
     }
 
@@ -157,8 +155,8 @@ export default Vue.extend({
 
   &__stats {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
 
     h5 {
       margin: f.rem(8) f.rem(10) 0 f.rem(10);
@@ -181,8 +179,8 @@ export default Vue.extend({
 
   &__author {
     display: inline-flex;
-    margin: f.rem(8) f.rem(10) 0 f.rem(10);
     align-items: center;
+    margin: f.rem(8) f.rem(10) 0 f.rem(10);
 
     img {
       width: f.rem(34);
@@ -197,23 +195,19 @@ export default Vue.extend({
 
   &__loading {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: rgba(0, 0, 0, .9);
 
-    &-block {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-
-      p {
-        color: white;
-        margin-left: f.rem(10);
-      }
+    p {
+      margin-left: f.rem(10);
+      color: white;
     }
+
 
     img {
       width: f.rem(90);

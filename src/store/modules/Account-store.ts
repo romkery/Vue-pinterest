@@ -186,16 +186,8 @@ const Account: IAccount = {
         }
         ,
         actions: {
-            setLoading({commit}, payload) {
-                commit('SET_LOADING', payload);
-            },
-
             setMap({commit}) {
                 commit('SET_MAP');
-            },
-
-            setLiked({commit}, payload) {
-                commit('SET_LIKE', payload);
             },
 
             setUserProfile: ({commit}, payload: string): void => {

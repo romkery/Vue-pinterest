@@ -10,7 +10,6 @@
           Home
         </button>
         <div class="header__content-search">
-          <i class="el-icon-search" />
           <input
             id="s3"
             v-model="userQuery"
@@ -19,17 +18,23 @@
             @keyup.enter="getQuery"
           >
         </div>
-        <el-tooltip
-          content="Dark Theme"
-          placement="top"
-          :effect="!isDark ? 'dark' : 'light'"
-          popper-class="header__content-tooltip"
-        >
-          <el-switch
-            v-model="isDark"
-            @change="toggleTheme"
-          />
-        </el-tooltip>
+        <div class="header__content-tooltip">
+          <el-tooltip
+            content="Dark Theme"
+            placement="top"
+            :effect="!isDark ? 'dark' : 'light'"
+            popper-class="header__content-tooltip"
+          >
+            <div class="header__content-switcher">
+              <i class="el-icon-sunrise" />
+              <el-switch
+                v-model="isDark"
+                @change="toggleTheme"
+              />
+              <i class="el-icon-moon-night" />
+            </div>
+          </el-tooltip>
+        </div>
         <div
           class="header__content-account"
           @click="$router.push(`/account/${profile.id}`)"
@@ -109,8 +114,11 @@ export default Vue.extend({
       this.setUserProfile(id);
     },
 
-    async getQuery() {
+
+    getQuery() {
       this.$router.push('/home');
+
+      this.setLoading(true);
 
       this.setUserQuery(this.userQuery);
 
@@ -118,7 +126,7 @@ export default Vue.extend({
 
       this.GetLayout();
       document.querySelector('body').style.overflow = 'hidden';
-      await this.setLoading(true);
+
       setTimeout(() => {
         document.querySelector('body').style.overflow = 'auto';
         this.setLoading(false);
@@ -203,6 +211,15 @@ export default Vue.extend({
       :hover {
         background: f.theme-var($--hover-input-bg);
       }
+    }
+
+    &-switcher {
+      display: flex;
+      flex-direction: row;
+      color: f.theme-var($--font-color);
+      gap: min(f.rem(10), 1vw);
+      align-items: center;
+      @include m.adaptive_font(20, 15)
     }
 
     //Switch with tooltip
