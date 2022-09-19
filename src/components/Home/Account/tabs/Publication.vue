@@ -15,7 +15,7 @@
 
 
 import {mapActions, mapState} from 'vuex';
-import Layout from '@/components/MainContent/Layout';
+import Layout from '../../Layout/Layout';
 
 
 export default Layout.extend({

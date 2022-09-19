@@ -1,11 +1,13 @@
 <template>
   <div class="main__layout">
     <div
-      v-if="getIsLoading"
       class="main__loading"
     >
       <div class="main__loading-block">
-        <div class="main__loading-img" />
+        <img
+          src="../../../assets/img/preloader.png"
+          alt="preloader"
+        >
         <P>Подождите, загружается...</P>
       </div>
     </div>
@@ -83,9 +85,9 @@ export default Vue.extend({
     },
     getRandomBool() {
       if (Math.floor(Math.random() * 2) === 1) {
-        return require('./../../assets/img/liked.svg');
+        return require('../../../assets/img/liked.svg');
       } else {
-        return require('./../../assets/img/heart.svg');
+        return require('../../../assets/img/heart.svg');
       }
       // return (Math.floor(Math.random() * 2) === 1) ? './../../assets/img/liked.svg' : './../../assets/img/heart.svg';
     },
@@ -97,9 +99,9 @@ export default Vue.extend({
     like() {
       let target = event.target;
       if (RegExp('\\b' + 'liked' + '\\b').test(target.src)) {
-        return target.src = require('./../../assets/img/heart.svg');
+        return target.src = require('../../../assets/img/heart.svg');
       } else {
-        return target.src = require('./../../assets/img/liked.svg');
+        return target.src = require('../../../assets/img/liked.svg');
       }
     },
     defineMb(elIndex, item, el) {
@@ -116,8 +118,8 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-@use "../../scss/util/functions" as f;
-@use "../../scss/util/breakpoints" as b;
+@use "../../../scss/util/functions" as f;
+@use "../../../scss/util/breakpoints" as b;
 
 .main {
 
@@ -205,6 +207,7 @@ export default Vue.extend({
     &-block {
       display: flex;
       align-items: center;
+      flex-direction: column;
 
       p {
         color: white;
@@ -212,11 +215,9 @@ export default Vue.extend({
       }
     }
 
-    &-img {
-      background: url("./../../assets/img/preloader.png");
+    img {
       width: f.rem(90);
       height: f.rem(90);
-      background-size: cover;
     }
 
   }

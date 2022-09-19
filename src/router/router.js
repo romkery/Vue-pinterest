@@ -1,5 +1,5 @@
 import VueRouter from 'vue-router';
-import Account from '../components/MainContent/Account/Account';
+import Account from '../components/Home/Account/Account';
 import Home from '@/components/Home/Home';
 
 const routes = [

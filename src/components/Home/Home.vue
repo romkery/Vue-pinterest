@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MainContent/>
+    <Layout />
   </div>
 </template>
 
@@ -8,14 +8,13 @@
 
 
 import Vue from 'vue';
-import Header from '@/components/Header/Header';
-import MainContent from '@/components/MainContent/MainContent';
+import Layout from '@/components/Home/Layout/Layout';
 
 
 export default Vue.component('Home', {
 
   components: {
-    MainContent
+    Layout
   },
 
   data() {

@@ -28,9 +28,9 @@
 <script>
 
 import Vue from 'vue';
-import Publication from '@/components/MainContent/Account/tabs/Publication';
-import Marks from '@/components/MainContent/Account/tabs/Marks';
-import Saved from '@/components/MainContent/Account/tabs/Saved';
+import Publication from '@/components/Home/Account/tabs/Publication';
+import Marks from '@/components/Home/Account/tabs/Marks';
+import Saved from '@/components/Home/Account/tabs/Saved';
 import {mapState} from 'vuex';
 
 export default Vue.extend({

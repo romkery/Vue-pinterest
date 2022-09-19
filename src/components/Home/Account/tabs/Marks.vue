@@ -17,9 +17,7 @@ export default Vue.component('Marks', {
   components: {},
 
   data() {
-    return {
-      userSvg: require('@/assets/img/user.svg')
-    };
+    return {};
   },
 });
 
@@ -27,8 +25,8 @@ export default Vue.component('Marks', {
 
 <style lang="scss">
 
-@use './src/scss/util/functions' as f;
-@use './src/scss/util/mixins' as m;
+@use '../../../../scss/util/functions' as f;
+@use '../../../../scss/util/mixins' as m;
 
 .marks {
   margin-top: f.rem(60);

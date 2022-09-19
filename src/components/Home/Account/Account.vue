@@ -45,9 +45,9 @@
 
 <script>
 
-import AccountTabs from '@/components/MainContent/Account/AccountTabs';
+import AccountTabs from '@/components/Home/Account/AccountTabs';
 import {mapActions, mapState} from 'vuex';
-import Layout from '@/components/MainContent/Layout';
+import Layout from '../Layout/Layout';
 
 export default Layout.extend({
     name: 'Account',
