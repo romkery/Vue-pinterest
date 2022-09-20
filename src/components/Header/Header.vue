@@ -26,12 +26,18 @@
             popper-class="header__content-tooltip"
           >
             <div class="header__content-switcher">
-              <i class="el-icon-sunrise" />
+              <i
+                class="el-icon-sunny"
+                :class="isDark ? '' : 'active'"
+              />
               <el-switch
                 v-model="isDark"
                 @change="toggleTheme"
               />
-              <i class="el-icon-moon-night" />
+              <i
+                class="el-icon-moon"
+                :class="isDark ? 'active' : ''"
+              />
             </div>
           </el-tooltip>
         </div>
@@ -71,6 +77,7 @@ export default Vue.extend({
     return {
       userQuery: '',
       isDark: false,
+      activeColor: window.getComputedStyle(document.body).getPropertyValue('$--accent-color')
     };
   },
 
@@ -219,7 +226,17 @@ export default Vue.extend({
       color: f.theme-var($--font-color);
       gap: min(f.rem(10), 1vw);
       align-items: center;
-      @include m.adaptive_font(20, 15)
+      @include m.adaptive_font(20, 15);
+
+      .active {
+        transition: .3s ease-in-out;
+        color: f.theme-var($--accent-color);
+      }
+    }
+
+    .is-checked .el-switch__core {
+      background-color: f.theme-var($--accent-color);
+      border: f.theme-var($--accent-color);
     }
 
     //Switch with tooltip
