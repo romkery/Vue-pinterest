@@ -4,7 +4,7 @@
   <br>Classic Grid Layout
 </h1>
 <p align="center">
-   Vue 2 random image aaplication.
+   Vue 2 random image application.
 </p> 
 
 
